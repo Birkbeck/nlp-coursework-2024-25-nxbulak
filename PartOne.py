@@ -12,17 +12,6 @@ import os # to look up operating system info
 nlp = spacy.load("en_core_web_sm")
 nlp.max_length = 2000000
 
-# get file path & use glob to find .txt files in said path
-dirpath = r'C:\Users\karin\OneDrive - Birkbeck, University of London\5. Natural Language Processing\Coursework\p1-novels'
-txt_files = glob.glob(os.path.join(dirpath, '*.txt'))
-
-data = []
-
-for txt_file in txt_files:
-    filename = os.path.splitext(os.path.basename(txt_file))[0]
-    parts = filename.split('-')
-    print(parts)
-
 def fk_level(text, d):
     """Returns the Flesch-Kincaid Grade Level of a text (higher grade is more difficult).
     Requires a dictionary of syllables per word.
@@ -53,6 +42,16 @@ def count_syl(word, d):
 # 1a) i. create a pandas dataframe with the following columns: text, title, author, year
 # 1a) ii. sort the dataframe by the year column before returning it, resetting or ignoring the dataframe index
 def read_novels(path=Path.cwd() / "texts" / "novels"):
+    # get file path & use glob to find .txt files in said path
+    dirpath = r'C:\Users\karin\OneDrive - Birkbeck, University of London\5. Natural Language Processing\Coursework\p1-novels'
+    txt_files = glob.glob(os.path.join(dirpath, '*.txt'))
+
+    data = []
+
+    for txt_file in txt_files:
+        filename = os.path.splitext(os.path.basename(txt_file))[0]
+        parts = filename.split('-')
+        print(parts)
     """Reads texts from a directory of .txt files and returns a DataFrame with the text, title,
     author, and year"""
     pass
