@@ -2,9 +2,9 @@
 
 # Note: The template functions here and the dataframe format for structuring your solution is a suggested but not mandatory approach. You can use a different approach if you like, as long as you clearly answer the questions and communicate your answers clearly.
 
-import nltk
-import spacy
-from pathlib import Path
+import nltk # import Natural Language Toolkit
+import spacy # import spaCy
+from pathlib imp
 
 
 nlp = spacy.load("en_core_web_sm")
