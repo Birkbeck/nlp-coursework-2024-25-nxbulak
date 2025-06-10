@@ -12,11 +12,11 @@ import os # to look up operating system info
 nlp = spacy.load("en_core_web_sm")
 nlp.max_length = 2000000
 
-# get the file path containing .txt files
+# get file path & use glob to find .txt files in said path
 dirpath = r'C:\Users\karin\OneDrive - Birkbeck, University of London\5. Natural Language Processing\Coursework\p1 - novels'
-
-# use glob to find files in directory path
 txt_files = glob.glob(os.path.join(dirpath, '*.txt'))
+
+data = [] # store the data above
 
 def fk_level(text, d):
     """Returns the Flesch-Kincaid Grade Level of a text (higher grade is more difficult).
