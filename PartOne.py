@@ -4,7 +4,9 @@
 
 import nltk # import Natural Language Toolkit
 import spacy # import spaCy
-from pathlib imp
+from pathlib import Path # to access files in other directories
+import pandas as pd # sort and organise data
+
 
 
 nlp = spacy.load("en_core_web_sm")
