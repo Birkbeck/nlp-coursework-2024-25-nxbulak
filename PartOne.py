@@ -7,13 +7,16 @@ import spacy               # import spaCy
 from pathlib import Path   # to access files in other directories
 import pandas as pd        # sort and organise data
 import glob                # to locate specific file type
-
-
+import os # to look up operating system info
 
 nlp = spacy.load("en_core_web_sm")
 nlp.max_length = 2000000
 
+# get the file path containing .txt files
+dirpath = r'C:\Users\karin\OneDrive - Birkbeck, University of London\5. Natural Language Processing\Coursework\p1 - novels'
 
+# use glob to find files in directory path
+txt_files = glob.glob(os.path.join(dirpath, '*.txt'))
 
 def fk_level(text, d):
     """Returns the Flesch-Kincaid Grade Level of a text (higher grade is more difficult).
@@ -42,7 +45,8 @@ def count_syl(word, d):
     """
     pass
 
-
+# 1a) i. create a pandas dataframe with the following columns: text, title, author, year
+# 1a) ii. sort the dataframe by the year column before returning it, resetting or ignoring the dataframe index
 def read_novels(path=Path.cwd() / "texts" / "novels"):
     """Reads texts from a directory of .txt files and returns a DataFrame with the text, title,
     author, and year"""
