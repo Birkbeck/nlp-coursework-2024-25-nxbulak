@@ -39,10 +39,7 @@ def count_syl(word, d):
     """
     pass
 
-# 1a) i. create a pandas dataframe with the following columns: text, title, author, year
-# 1a) ii. sort the dataframe by the year column before returning it, resetting or ignoring the dataframe index
-def read_novels(path=Path.cwd() / "texts" / "novels"):
-
+def read_novels(path=Path.cwd() / "texts" / "novels"): # 1a) i. create a pandas dataframe with the following columns: text, title, author, year
     """Reads texts from a directory of .txt files and returns a DataFrame with the text, title,
     author, and year"""
 
@@ -85,12 +82,11 @@ def read_novels(path=Path.cwd() / "texts" / "novels"):
             print(f"Error: filename not parsed: {filename}")
 
     df = pd.DataFrame(data) # create data frame
-    if not df.empty:
+    if not df.empty: # 1a) ii. sort the dataframe by the year column before returning it, resetting or ignoring the dataframe index
         df = df.sort_values('year').reset_index(drop=True)
 
     print(f"\nTotal novels loaded: {len(df)}")
     return df
-
 
     pass
 
