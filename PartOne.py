@@ -89,12 +89,11 @@ def read_novels(path=Path.cwd() / "texts" / "novels"): # 1a) i. create a pandas 
     return df
 
     pass
-
 # test for read_novels
-if __name__ == "__main__":
-    print("reading novels...")
-    df = read_novels()
-    print("done")
+
+#df = read_novels()
+#print(df.columns.tolist())
+#print(df[['title', 'author', 'year']].head())
 
 def parse(df, store_path=Path.cwd() / "pickles", out_name="parsed.pickle"):
     """Parses the text of a DataFrame using spaCy, stores the parsed docs as a column and writes 
