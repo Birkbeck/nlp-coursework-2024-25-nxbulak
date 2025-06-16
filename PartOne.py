@@ -66,6 +66,13 @@ def read_novels(path=Path.cwd() / "texts" / "novels"):
             title_parts = parts[:-2] # title of novel
             title = '-'.join(title_parts).replace('_', ' ')
 
+            try:
+                year = int(year_str) # change year to int
+
+                try: # read file content
+                    with open(txt_file, 'r', encoding='utf-8') as file:
+                        content = file.read()
+
     pass
 
 # test for read_novels
