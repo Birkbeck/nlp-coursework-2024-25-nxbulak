@@ -68,10 +68,12 @@ def read_novels(path=Path.cwd() / "texts" / "novels"):
 
             try:
                 year = int(year_str) # change year to int
-
+                print(f"Year: {year}")
                 try: # read file content
                     with open(txt_file, 'r', encoding='utf-8') as file:
                         content = file.read()
+                        print(f"File Content with utf-8 - length: {len(content)}")
+                        print(f"First 100 char: {content[:100]}")
 
     pass
 
