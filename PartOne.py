@@ -70,11 +70,11 @@ def read_novels(path=Path.cwd() / "texts" / "novels"):
                 year = int(year_str) # change year to int
                 print(f"Year: {year}")
 
-                with open(txt_file, 'r', encoding='utf-8') as file:
+                with open(txt_file, 'r', encoding='utf-8') as file: # read file content
                     content = file.read()
 
                 data.append({'text': content, 'title': title, 'author': author, 'year': year})
-                print(f"added: {title} by {author} ({year})")
+                print(f"added: {title} by {author} ({year})") # check all added
 
             except ValueError:
                 print(f"Error: Year conversion failed for '{year_str}' to int for {filename}")
@@ -84,7 +84,12 @@ def read_novels(path=Path.cwd() / "texts" / "novels"):
         else:
             print(f"Error: filename not parsed: {filename}")
 
+    df = pd.DataFrame(data) # create data frame
+    if not df.empty:
+        df = df.sort_values('year').reset_index(drop=True)
 
+    print(f"\nTotal novels loaded: {len(df)}")
+    return df
 
 
     pass
