@@ -69,11 +69,18 @@ def read_novels(path=Path.cwd() / "texts" / "novels"):
             try:
                 year = int(year_str) # change year to int
                 print(f"Year: {year}")
-                try: # read file content
-                    with open(txt_file, 'r', encoding='utf-8') as file:
-                        content = file.read()
-                        print(f"File Content with utf-8 - length: {len(content)}")
-                        print(f"First 100 char: {content[:100]}")
+
+                with open(txt_file, 'r', encoding='utf-8') as file:
+                    content = file.read()
+                    print(f"File Content with utf-8 - length: {len(content)}")
+                    print(f"First 100 char: {content[:100]}")
+
+            except ValueError:
+                print(f"Error: Could not convert '{year_str}' to an int.")
+            except FileNotFoundError:
+                print(f"Error: File '{txt_file}' could not be found.")
+            except Exception as e:
+                print(f"Error: {e}")
 
     pass
 
