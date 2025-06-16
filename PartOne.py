@@ -60,6 +60,8 @@ def read_novels(path=Path.cwd() / "texts" / "novels"):
         print(f"Processing: {filename}")
         print(f"Parts: {parts}")
 
+        if len(parts) >= 3: # minimum text should contain title-author-year
+            year_str = parts[-1] # taking last part (year)
 
     pass
 
