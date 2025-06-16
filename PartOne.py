@@ -72,15 +72,20 @@ def read_novels(path=Path.cwd() / "texts" / "novels"):
 
                 with open(txt_file, 'r', encoding='utf-8') as file:
                     content = file.read()
-                    print(f"File Content with utf-8 - length: {len(content)}")
-                    print(f"First 100 char: {content[:100]}")
+
+                data.append({'text': content, 'title': title, 'author': author, 'year': year})
+                print(f"added: {title} by {author} ({year})")
 
             except ValueError:
-                print(f"Error: Could not convert '{year_str}' to an int.")
-            except FileNotFoundError:
-                print(f"Error: File '{txt_file}' could not be found.")
+                print(f"Error: Year conversion failed for '{year_str}' to int for {filename}")
             except Exception as e:
-                print(f"Error: {e}")
+                print(f"Error: Reading file name {filename} failed for {e}")
+
+        else:
+            print(f"Error: filename not parsed: {filename}")
+
+
+
 
     pass
 
