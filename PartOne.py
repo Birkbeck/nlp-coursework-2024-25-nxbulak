@@ -130,10 +130,10 @@ def get_ttrs(df): # 1b) This function should return a dictionary mapping the tit
     return results
 
 #if __name__ == "__main__": # testing for question 1b) - PENDING
-    #print("nltk_ttr & get_ttrs testing commence")
+    print("nltk_ttr & get_ttrs testing commence")
 
     # test 1: nltk_ttr function - string test: PASSED
-    #print("\n1. Testing nltk_")
+    #print("\n1. Testing nltk_ttr:")
     #print("-" * 30)
 
     #test_text1 = "The owl looked at the moon. It then sighed!"
@@ -142,7 +142,17 @@ def get_ttrs(df): # 1b) This function should return a dictionary mapping the tit
     #print(f"TTR: {result1}")
     #print(f"Expected: ~0.889 (8 unique / 9 total, no punctuation included)")
 
-    #
+    # test 2: get_ttrs function on novels
+    print("\n2. Testing get_ttrs:")
+    print("-" * 30)
+
+    try:
+        df = read_novels()
+        ttr_results = get_ttrs(df)
+        print(f"Calculated ttr results for {len(ttr_results)} novels")
+        print(f"Sample results:")
+
+
 
 def get_fks(df):
     """helper function to add fk scores to a dataframe"""
