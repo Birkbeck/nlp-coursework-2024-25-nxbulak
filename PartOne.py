@@ -9,6 +9,8 @@ import pandas as pd        # sort and organise data
 import glob                # to locate specific file type
 import os                  # to look up operating system info
 
+from nltk import word_tokenize
+
 nlp = spacy.load("en_core_web_sm")
 nlp.max_length = 2000000
 
@@ -101,8 +103,14 @@ def parse(df, store_path=Path.cwd() / "pickles", out_name="parsed.pickle"):
     pass
 
 
-def nltk_ttr(text):
+def nltk_ttr(text): # Calculates the type-token ratio of a text. Text is tokenized using nltk.word_tokenize.
     """Calculates the type-token ratio of a text. Text is tokenized using nltk.word_tokenize."""
+
+    tokens = word_tokenize(text.lower()) # tokenize using NLTK library only
+
+    clean_tokens = [token for token in tokens if token.islpha()] # remove punctuation and ignore case when counting types
+
+
     pass
 
 
