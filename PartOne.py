@@ -152,6 +152,18 @@ def get_ttrs(df): # 1b) This function should return a dictionary mapping the tit
         print(f"Calculated ttr results for {len(ttr_results)} novels")
         print(f"Sample results:")
 
+        # show first  results
+        count = 0
+        for title, ttr in ttr_results.items():
+            print(f"{title}: {ttr.4f}")
+            count += 1
+            if count >= 3:
+                break
+
+    except Exception as e:
+        print(f"Error: {e}")
+
+print("\nTesting finished")
 
 
 def get_fks(df):
