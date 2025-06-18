@@ -129,7 +129,7 @@ def get_ttrs(df): # 1b) This function should return a dictionary mapping the tit
         results[row["title"]] = nltk_ttr(row["text"])
     return results
 
-#if __name__ == "__main__": # testing for question 1b) - PENDING
+if __name__ == "__main__": # testing for question 1b) - PENDING
     print("nltk_ttr & get_ttrs testing commence")
 
     # test 1: nltk_ttr function - string test: PASSED
@@ -155,7 +155,7 @@ def get_ttrs(df): # 1b) This function should return a dictionary mapping the tit
         # show first  results
         count = 0
         for title, ttr in ttr_results.items():
-            print(f"{title}: {ttr.4f}")
+            print(f"{title}: {ttr:.4f}")
             count += 1
             if count >= 3:
                 break
