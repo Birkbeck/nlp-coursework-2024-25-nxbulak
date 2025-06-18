@@ -14,7 +14,7 @@ from nltk import word_tokenize
 nlp = spacy.load("en_core_web_sm")
 nlp.max_length = 2000000
 
-def fk_level(text, d):
+def fk_level(text, d): # 1c) This function should return a dictionary mapping the title of each novel to the Flesch-Kincaid reading grade level score of the text (this func: calc FK for single text)
     """Returns the Flesch-Kincaid Grade Level of a text (higher grade is more difficult).
     Requires a dictionary of syllables per word.
 
@@ -28,7 +28,7 @@ def fk_level(text, d):
     pass
 
 
-def count_syl(word, d):
+def count_syl(word, d): # 1c) This function should return a dictionary mapping the title of each novel to the Flesch-Kincaid reading grade level score of the text (this func: calc syllables for words)
     """Counts the number of syllables in a word given a dictionary of syllables per word.
     if the word is not in the dictionary, syllables are estimated by counting vowel clusters
 
@@ -40,6 +40,14 @@ def count_syl(word, d):
         int: The number of syllables in the word.
     """
     pass
+
+def get_fks(df): # 1c) This function should return a dictionary mapping the title of each novel to the Flesch-Kincaid reading grade level score of the text (this func: helper to apply FK df)
+    """helper function to add fk scores to a dataframe"""
+    results = {}
+    cmudict = nltk.corpus.cmudict.dict()
+    for i, row in df.iterrows():
+        results[row["title"]] = round(fk_level(row["text"], cmudict), 4)
+    return results
 
 def read_novels(path=Path.cwd() / "texts" / "novels"): # 1a) i. create a pandas dataframe with the following columns: text, title, author, year
     """Reads texts from a directory of .txt files and returns a DataFrame with the text, title,
@@ -162,16 +170,6 @@ def get_ttrs(df): # 1b) This function should return a dictionary mapping the tit
 #         print(f"Error: {e}")
 #
 # print("\nTesting finished")
-
-
-def get_fks(df):
-    """helper function to add fk scores to a dataframe"""
-    results = {}
-    cmudict = nltk.corpus.cmudict.dict()
-    for i, row in df.iterrows():
-        results[row["title"]] = round(fk_level(row["text"], cmudict), 4)
-    return results
-
 
 def subjects_by_verb_pmi(doc, target_verb):
     """Extracts the most common subjects of a given verb in a parsed document. Returns a list."""
