@@ -108,11 +108,17 @@ def nltk_ttr(text): # Calculates the type-token ratio of a text. Text is tokeniz
 
     tokens = word_tokenize(text.lower()) # tokenize using NLTK library only
 
-    clean_tokens = [token for token in tokens if token.islpha()] # remove punctuation and ignore case when counting types
+    clean_tokens = [token for token in tokens if token.islpha()] # remove punctuation and ignore case for counting types
 
+    if len(clean_tokens) == 0: # precaution to avoid errors
+        return 0
+
+    # 1b) This function should return a dictionary mapping the title of each novel to its type-token ratio
+    types = set(clean_tokens)
+    ttr = len(types)/len(clean_tokens)
+    return ttr
 
     pass
-
 
 def get_ttrs(df):
     """helper function to add ttr to a dataframe"""
