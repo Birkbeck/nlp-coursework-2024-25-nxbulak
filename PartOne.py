@@ -91,6 +91,7 @@ def read_novels(path=Path.cwd() / "texts" / "novels"): # 1a) i. create a pandas 
     return df
 
     pass
+
 # test for read_novels
 
 #df = read_novels()
@@ -103,7 +104,7 @@ def parse(df, store_path=Path.cwd() / "pickles", out_name="parsed.pickle"):
     pass
 
 
-def nltk_ttr(text): # Calculates the type-token ratio of a text. Text is tokenized using nltk.word_tokenize.
+def nltk_ttr(text): # 1b) This function should return a dictionary mapping the title of each novel to its type-token ratio
     """Calculates the type-token ratio of a text. Text is tokenized using nltk.word_tokenize."""
 
     tokens = word_tokenize(text.lower()) # tokenize using NLTK library only
@@ -120,13 +121,25 @@ def nltk_ttr(text): # Calculates the type-token ratio of a text. Text is tokeniz
 
     pass
 
-def get_ttrs(df):
+def get_ttrs(df): # 1b) This function should return a dictionary mapping the title of each novel to its type-token ratio
     """helper function to add ttr to a dataframe"""
     results = {}
     for i, row in df.iterrows():
         results[row["title"]] = nltk_ttr(row["text"])
     return results
 
+if __name__ == "__main__":
+    print("nltk_ttr & get_ttrs testing commence")
+
+    # test 1: nltk_ttr function - string test
+    print("\n1. Testing nltk_")
+    print("-" * 30)
+
+    test_text1 = "The owl looked at the moon. It then sighed!"
+    result1 = nltk_ttr(test_text1)
+    print(f"Text: '{test_text1}'")
+    print(f"TTR: {result1}")
+    print(f"Expected: ~0.889 (8 unique / 9 total, no punctuation included)")
 
 def get_fks(df):
     """helper function to add fk scores to a dataframe"""
