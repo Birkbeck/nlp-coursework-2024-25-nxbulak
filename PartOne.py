@@ -26,9 +26,11 @@ def fk_level(text, d): # 1c) This function should return a dictionary mapping th
         float: The Flesch-Kincaid Grade Level of the text. (higher grade is more difficult)
     """
 
-    sentences = sent_tokenize(text)
-    words
+    sentences = sent_tokenize(text) # split text into sentences
+    words = [w for w in word_tokenize(text.lower()) if w.isaplha()] # lower case for consistency and remove punct and numbers
 
+    if len(sentences) == 0 or len(words) == 0: # avoid / by zero
+        return 0
     pass
 
 
