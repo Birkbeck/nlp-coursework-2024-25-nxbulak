@@ -1,5 +1,5 @@
 #Re-assessment template 2025
-# commit and push to transfer back to PC
+
 # Note: The template functions here and the dataframe format for structuring your solution is a suggested but not mandatory approach. You can use a different approach if you like, as long as you clearly answer the questions and communicate your answers clearly.
 
 import nltk                # import Natural Language Toolkit
@@ -273,7 +273,7 @@ def subjects_by_verb_count(doc, verb):
 
 
 
-def adjective_counts(doc):
+def syntactic_objects(doc):
     """Extracts the most common adjectives in a parsed document. Returns a list of tuples."""
     pass
 
