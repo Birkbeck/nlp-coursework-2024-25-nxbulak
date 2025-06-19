@@ -288,16 +288,25 @@ def parse(df, store_path=Path.cwd() / "pickles", out_name="parsed.pickle"): # 1e
     """Parses the text of a DataFrame using spaCy, stores the parsed docs as a column and writes
     the resulting  DataFrame to a pickle file"""
 
-    # 1e) i. Use spaCy nlp method to add a new column to the dataframe that contains parsed and tokenized Doc objects for each text.
+    # 1e) Load spaCy and max_length
     nlp = spacy.load("en_core_web_sm")
     nlp.max_length = 2000000
+
+    # 1e) i. Use spaCy nlp method to add a new column to the dataframe that contains parsed and tokenized Doc objects for each text.
+    print("Parsing and tokenizing texts with spaCy")
+    parsed_docs = []
+    for i, row in df.iterrows():
+        print(f"Parsing {row['title']}")
+        doc = nlp(row["text"])
+        parsed_docs.append(doc)
+    df["parsed"] = parsed_docs
 
     # 1e) ii. Serialise the resulting dataframe (i.e., write it out to disk) using the pickle format.
 
     pass
 
 def syntactic_objects(doc):
-    """Extracts the most common adjectives in a parsed document. Returns a list of tuples."""
+    """Extracts the most common syntactic objects overall in the text.""" # adjusted as per Moodle announcement.
     pass
 
 def subjects_by_verb_pmi(doc, target_verb):
