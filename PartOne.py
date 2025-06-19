@@ -68,6 +68,21 @@ def read_novels(path=Path.cwd() / "p1-texts" / "novels"): # 1a) i. create a pand
 
     pass
 
+if __name__ == "__main__":
+    from pathlib import Path
+
+    novels_path = Path.cwd() / "p1-texts" / "novels"
+    print(f"Looking for novels in: {novels_path}")
+    print(f"Path found: {novels_path.exists()}")
+
+    if novels_path.exists():
+        txt_files = list(novels_path.glob("*.txt"))
+        print(f"Found {len(txt_files)} .txt files")
+        for file in txt_files[:3]: # first 3
+            print(f"{file.name}")
+        else:
+            print("Path doesn't exist")
+
 # if __name__ == "__main__": # testing for question 1a) - PASSED
 #     df = read_novels()
 #     print(df.columns.tolist())
