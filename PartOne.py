@@ -4,12 +4,13 @@
 
 import nltk                # import Natural Language Toolkit
 import spacy               # import spaCy
-from pathlib import Path   # to access files in other directories
 import pandas as pd        # sort and organise data
 import glob                # to locate specific file type
 import os                  # to look up operating system info
 
-from nltk import word_tokenize, sent_tokenize
+from nltk import word_tokenize, sent_tokenize   # to split text into words and sentences
+from pathlib import Path                        # to access files in other directories
+from collections import Counter                 # to count frequencies of words
 
 nlp = spacy.load("en_core_web_sm")
 nlp.max_length = 2000000
@@ -283,9 +284,16 @@ def get_ttrs(df): # 1b) This function should return a dictionary mapping the tit
 #
 # print("\nTesting finished")
 
-def parse(df, store_path=Path.cwd() / "pickles", out_name="parsed.pickle"):
+def parse(df, store_path=Path.cwd() / "pickles", out_name="parsed.pickle"): # 1e) parse: The goal of this function is to process the texts with spaCy's tokenizer and parser, and store the processed texts.
     """Parses the text of a DataFrame using spaCy, stores the parsed docs as a column and writes
     the resulting  DataFrame to a pickle file"""
+
+    # 1e) i. Use spaCy nlp method to add a new column to the dataframe that contains parsed and tokenized Doc objects for each text.
+    nlp = spacy.load("en_core_web_sm")
+    nlp.max_length = 2000000
+
+    # 1e) ii. Serialise the resulting dataframe (i.e., write it out to disk) using the pickle format.
+
     pass
 
 def syntactic_objects(doc):

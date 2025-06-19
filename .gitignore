@@ -5,6 +5,7 @@ p2-texts/
 # ignore pickle files (as suggested in lecture 7)
 *.pkl
 *.pickle
+pickles/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
