@@ -68,20 +68,33 @@ def read_novels(path=Path.cwd() / "p1-texts" / "novels"): # 1a) i. create a pand
 
     pass
 
-if __name__ == "__main__":
-    from pathlib import Path
 
-    novels_path = Path.cwd() / "p1-texts" / "novels"
-    print(f"Looking for novels in: {novels_path}")
-    print(f"Path found: {novels_path.exists()}")
-
-    if novels_path.exists():
-        txt_files = list(novels_path.glob("*.txt"))
-        print(f"Found {len(txt_files)} .txt files")
-        for file in txt_files[:3]: # first 3
-            print(f"{file.name}")
-        else:
-            print("Path doesn't exist")
+# if __name__ == "__main__": # testing for path - PASSED
+#     from pathlib import Path
+#
+#     # check path
+#     novels_path = Path.cwd() / "p1-texts" / "novels"
+#     print(f"Current working directory: {Path.cwd()}")
+#     print(f"Looking for novels in: {novels_path}")
+#     print(f"Path found: {novels_path.exists()}")
+#     print(f"Path is in directory: {novels_path.is_dir()}")
+#
+#     # locate files
+#     txt_files = list(novels_path.glob("*.txt"))
+#     print(f"Found {len(txt_files)} .txt files")
+#
+#     # show first files found
+#     for file in txt_files[:5]:
+#         print(f" - {file.name}")
+#
+#     print("\n" + "-" * 30)
+#     print("Test on read_novels funct:")
+#     try:
+#         df = read_novels()
+#         print(f"Loaded {len(df)} novels")
+#         print(df[['title', 'author', 'year']].head())
+#     except Exception as e:
+#         print(f"Error in read_novels funct: {e}")
 
 # if __name__ == "__main__": # testing for question 1a) - PASSED
 #     df = read_novels()
