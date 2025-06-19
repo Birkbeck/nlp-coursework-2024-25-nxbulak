@@ -2,13 +2,19 @@
 estimator of text difficulty? Give two conditions. (Text answer, 200 words maximum)
 
 Answer:
-lect 5 - classification tasks may likely involve
-specialised language (e.g. scientific texts, legal docs etc)
+The Flesch Kincaid (FK) score is arguably not a very
+reliable estimator in various scenarios. As discussed
+in Lecture 5, classification tasks are likely to involve
+specialised language (examples include scientific texts
+or legal documents). The downfall of FK in this instance
+is that it only focuses on sentance length and syllable
+count over semantic complexity of the texts. An alternative
+that may be more reliable would be using Type-Toke Ratio
+(TTR). As mentioned in Lecture 3, TTR is able to give a
+simple estimate of text complexity so this may be a better
+approach. Another example
 
-FK - only focus on sentance length and syllable count
-over the semantic complexity - lect 3 on type-token
-ratio (ttr) being able to give simple estimate of text
-complexity may be a better method to use
+
 
 also misses contextual knowledge - lect 1 discussed
 emphasis on the need to understand language properties
