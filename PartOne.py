@@ -312,6 +312,17 @@ def parse(df, store_path=Path.cwd() / "pickles", out_name="parsed.pickle"): # 1e
 
     pass
 
+def load_parsed_df(store_path=Path.cwd() / "pickles", pickle_name="parsed.pickle"): # 1e) iv. Load the dataframe from the pickle file and use it for the remainder of this coursework part. Note: one or more of the texts may exceed the default maximum length or parse the text in sections.
+    pickle_path = store_path / pickle_name
+    if pickle_path.exists():
+        df = pd.read_pickle(pickle_path)
+        print(f"Parsed dataframe loaded from {pickle_path}")
+        print(f"Dataframe contains {len(df)} novels with parsed column")
+        return df
+    else;
+    print(f"Error: Pickle file not found in {pickle_path}")
+    return None
+
 def syntactic_objects(doc):
     """Extracts the most common syntactic objects overall in the text.""" # adjusted as per Moodle announcement.
     pass
