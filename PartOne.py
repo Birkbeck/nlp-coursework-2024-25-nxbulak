@@ -104,7 +104,6 @@ def count_syl(word,
 
     pass
 
-
 def fk_level(text,
              d):  # 1c) This function should return a dictionary mapping the title of each novel to the Flesch-Kincaid reading grade level score of the text (this func: calc FK for single text)
     """Returns the Flesch-Kincaid Grade Level of a text (higher grade is more difficult).
@@ -131,10 +130,9 @@ def fk_level(text,
     avg_sentence_length = len(words) / len(sentences)  # words per sentence
     avg_syllables = total_syllables / len(words)  # syllables per word
 
-    return 0.39 * avg_sentence_length + 11.8 * avg_syllables - 15.59  # Flesch-Kincaid Grade Level Formula - CHECKING WITH PN ON CLARIFICATION OF FORMULA
+    return 0.39 * avg_sentence_length + 11.8 * avg_syllables - 15.59  # Flesch-Kincaid Grade Level Formula - Confirmed by PN 19/06/2025
 
     pass
-
 
 def get_fks(
         df):  # 1c) This function should return a dictionary mapping the title of each novel to the Flesch-Kincaid reading grade level score of the text (this func: helper to apply FK df)
@@ -144,7 +142,6 @@ def get_fks(
     for i, row in df.iterrows():
         results[row["title"]] = round(fk_level(row["text"], cmudict), 4)
     return results
-
 
 # if __name__ == '__main__':  # testing for question 1c) - PASSED
 #
