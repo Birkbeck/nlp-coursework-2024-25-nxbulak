@@ -31,8 +31,16 @@ def fk_level(text, d): # 1c) This function should return a dictionary mapping th
 
     if len(sentences) == 0 or len(words) == 0: # avoid / by zero
         return 0
-    pass
 
+    total_syllables = sum(count_syl(word, d) for word in words) # count syllables across the words
+
+    # calc averages for Flesch-Kincaid
+    avg_sentence_length = len(words) / len(sentences) # words per sentence
+    avg_syllables = total_syllables / len(words) # syllables per word
+
+    return 0.39 * avg_sentence_length + 11.8 * avg_syllables - 15.59 # Flesch-Kincaid Grade Level Formula - CHECKING WITH PN ON CLARIFICATION OF FORMULA
+
+    pass
 
 def count_syl(word, d): # 1c) This function should return a dictionary mapping the title of each novel to the Flesch-Kincaid reading grade level score of the text (this func: calc syllables for words)
     """Counts the number of syllables in a word given a dictionary of syllables per word.
