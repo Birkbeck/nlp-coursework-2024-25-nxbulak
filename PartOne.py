@@ -14,103 +14,6 @@ from nltk import word_tokenize, sent_tokenize
 nlp = spacy.load("en_core_web_sm")
 nlp.max_length = 2000000
 
-def count_syl(word, d): # 1c) This function should return a dictionary mapping the title of each novel to the Flesch-Kincaid reading grade level score of the text (this func: calc syllables for words)
-    """Counts the number of syllables in a word given a dictionary of syllables per word.
-    if the word is not in the dictionary, syllables are estimated by counting vowel clusters
-
-    Args:
-        word (str): The word to count syllables for.
-        d (dict): A dictionary of syllables per word.
-
-    Returns:
-        int: The number of syllables in the word.
-    """
-    word = word.lower() # convert to lowercase for consistency
-
-    if word in d: # try CMU dict first
-        return len([p for p in d[word][0] if p[-1].isdigit()]) # count stress-marked phemones
-
-    # count vowel groups when word not in dict
-    vowels = 'aeiouy'
-    count = 0
-    prev_vowel = False # check if prev character was a vowel
-
-    for char in word:
-        if char in vowels: # only count as new syllable if prev character was not a vowel
-            if not prev_vowel:
-                count += 1
-            prev_vowel = True
-        else:
-            prev_vowel = False # consonants
-
-    return max(1, count) # minimum 1 syllable
-
-    pass
-
-def fk_level(text, d): # 1c) This function should return a dictionary mapping the title of each novel to the Flesch-Kincaid reading grade level score of the text (this func: calc FK for single text)
-    """Returns the Flesch-Kincaid Grade Level of a text (higher grade is more difficult).
-    Requires a dictionary of syllables per word.
-
-    Args:
-        text (str): The text to analyze.
-        d (dict): A dictionary of syllables per word.
-
-    Returns:
-        float: The Flesch-Kincaid Grade Level of the text. (higher grade is more difficult)
-    """
-
-    sentences = sent_tokenize(text) # split text into sentences
-    words = [w for w in word_tokenize(text.lower()) if w.isaplha()] # lower case for consistency and remove punct and numbers
-
-    if len(sentences) == 0 or len(words) == 0: # avoid / by zero
-        return 0
-
-    total_syllables = sum(count_syl(word, d) for word in words) # count syllables across the words
-
-    # calc averages for Flesch-Kincaid
-    avg_sentence_length = len(words) / len(sentences) # words per sentence
-    avg_syllables = total_syllables / len(words) # syllables per word
-
-    return 0.39 * avg_sentence_length + 11.8 * avg_syllables - 15.59 # Flesch-Kincaid Grade Level Formula - CHECKING WITH PN ON CLARIFICATION OF FORMULA
-
-    pass
-
-def get_fks(df): # 1c) This function should return a dictionary mapping the title of each novel to the Flesch-Kincaid reading grade level score of the text (this func: helper to apply FK df)
-    """helper function to add fk scores to a dataframe"""
-    results = {}
-    cmudict = nltk.corpus.cmudict.dict()
-    for i, row in df.iterrows():
-        results[row["title"]] = round(fk_level(row["text"], cmudict), 4)
-    return results
-
-if __name__ == '__main__': # testing for question 1c) - PENDING
-
-    print("count_syl, fk_level and get_fks test commence")
-    print("-" * 30)
-
-    # download NLTK data & load CMU dict
-    nltk.download('cmudict', quiet=True)
-    nltk.download('punkt', quiet=True)
-    cmudict = nltk.corpus.cmudict.dict()
-
-    # test 1: count_syl
-    print("\n1. Testing count_syl:")
-    print("-" * 30)
-    test_words = ["hello", "beans", "lullaby"]
-    for word in test_words:
-        syllables = count_syl(word, cmudict)
-        print(f"'{word}' syllables: {syllables}")
-
-    # test 2: fk_level
-    print("\n1. Testing fk_level:")
-    print("-" * 30)
-    test_texts = ["The owl looked at the moon. It sighed!", "Wherever the river may flow, it will always lead back to the sea."]
-    for text in test_texts:
-        fk_score = fk_level(text, cmudict)
-        print(f"'{text}' fk_score: {fk_score:.4f}")
-
-
-
 def read_novels(path=Path.cwd() / "texts" / "novels"): # 1a) i. create a pandas dataframe with the following columns: text, title, author, year
     """Reads texts from a directory of .txt files and returns a DataFrame with the text, title,
     author, and year"""
@@ -166,6 +69,117 @@ def read_novels(path=Path.cwd() / "texts" / "novels"): # 1a) i. create a pandas 
 #     df = read_novels()
 #     print(df.columns.tolist())
 #     print(df[['title', 'author', 'year']].head())
+
+def count_syl(word,
+              d):  # 1c) This function should return a dictionary mapping the title of each novel to the Flesch-Kincaid reading grade level score of the text (this func: calc syllables for words)
+    """Counts the number of syllables in a word given a dictionary of syllables per word.
+    if the word is not in the dictionary, syllables are estimated by counting vowel clusters
+
+    Args:
+        word (str): The word to count syllables for.
+        d (dict): A dictionary of syllables per word.
+
+    Returns:
+        int: The number of syllables in the word.
+    """
+    word = word.lower()  # convert to lowercase for consistency
+
+    if word in d:  # try CMU dict first
+        return len([p for p in d[word][0] if p[-1].isdigit()])  # count stress-marked phemones
+
+    # count vowel groups when word not in dict
+    vowels = 'aeiouy'
+    count = 0
+    prev_vowel = False  # check if prev character was a vowel
+
+    for char in word:
+        if char in vowels:  # only count as new syllable if prev character was not a vowel
+            if not prev_vowel:
+                count += 1
+            prev_vowel = True
+        else:
+            prev_vowel = False  # consonants
+
+    return max(1, count)  # minimum 1 syllable
+
+    pass
+
+
+def fk_level(text,
+             d):  # 1c) This function should return a dictionary mapping the title of each novel to the Flesch-Kincaid reading grade level score of the text (this func: calc FK for single text)
+    """Returns the Flesch-Kincaid Grade Level of a text (higher grade is more difficult).
+    Requires a dictionary of syllables per word.
+
+    Args:
+        text (str): The text to analyze.
+        d (dict): A dictionary of syllables per word.
+
+    Returns:
+        float: The Flesch-Kincaid Grade Level of the text. (higher grade is more difficult)
+    """
+
+    sentences = sent_tokenize(text)  # split text into sentences
+    words = [w for w in word_tokenize(text.lower()) if
+             w.isaplha()]  # lower case for consistency and remove punct and numbers
+
+    if len(sentences) == 0 or len(words) == 0:  # avoid / by zero
+        return 0
+
+    total_syllables = sum(count_syl(word, d) for word in words)  # count syllables across the words
+
+    # calc averages for Flesch-Kincaid
+    avg_sentence_length = len(words) / len(sentences)  # words per sentence
+    avg_syllables = total_syllables / len(words)  # syllables per word
+
+    return 0.39 * avg_sentence_length + 11.8 * avg_syllables - 15.59  # Flesch-Kincaid Grade Level Formula - CHECKING WITH PN ON CLARIFICATION OF FORMULA
+
+    pass
+
+
+def get_fks(
+        df):  # 1c) This function should return a dictionary mapping the title of each novel to the Flesch-Kincaid reading grade level score of the text (this func: helper to apply FK df)
+    """helper function to add fk scores to a dataframe"""
+    results = {}
+    cmudict = nltk.corpus.cmudict.dict()
+    for i, row in df.iterrows():
+        results[row["title"]] = round(fk_level(row["text"], cmudict), 4)
+    return results
+
+
+if __name__ == '__main__':  # testing for question 1c) - PENDING
+
+    print("count_syl, fk_level and get_fks test commence")
+    print("-" * 30)
+
+    # download NLTK data & load CMU dict
+    nltk.download('cmudict', quiet=True)
+    nltk.download('punkt', quiet=True)
+    cmudict = nltk.corpus.cmudict.dict()
+
+    # test 1: count_syl
+    print("\n1. Testing count_syl:")
+    print("-" * 30)
+    test_words = ["hello", "beans", "lullaby"]
+    for word in test_words:
+        syllables = count_syl(word, cmudict)
+        print(f"'{word}' syllables: {syllables}")
+
+    # test 2: fk_level
+    print("\n2. Testing fk_level:")
+    print("-" * 30)
+    test_texts = ["The owl looked at the moon. It sighed!",
+                  "Wherever the river may flow, it will always lead back to the sea."]
+    for text in test_texts:
+        fk_score = fk_level(text, cmudict)
+        print(f"'{text}' fk_score: {fk_score:.4f}")
+
+    # test 3: get_fks
+    print("\n3. Testing get_fks:")
+    print("-" * 30)
+    try:
+        df = read_novels()
+        fk_results = get_fks(df)
+
 
 def parse(df, store_path=Path.cwd() / "pickles", out_name="parsed.pickle"):
     """Parses the text of a DataFrame using spaCy, stores the parsed docs as a column and writes 
