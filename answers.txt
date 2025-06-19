@@ -1,2 +1,4 @@
 1d) When is the Flesch Kincaid score *not* a valid, robust or reliable
 estimator of text difficulty? Give two conditions. (Text answer, 200 words maximum)
+
+Answer:
