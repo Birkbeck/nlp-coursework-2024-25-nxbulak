@@ -1,37 +1,17 @@
-1d) When is the Flesch Kincaid score *not* a valid, robust or reliable
-estimator of text difficulty? Give two conditions. (Text answer, 200 words maximum)
+1d) When is the Flesch Kincaid score *not* a valid, robust or reliable estimator of text difficulty?
+Give two conditions. (Text answer, 200 words maximum)
 
 Answer:
-The Flesch Kincaid (FK) score is arguably not a very
-reliable estimator in various scenarios. As discussed
-in Lecture 5, classification tasks are likely to involve
-specialised language (examples include scientific texts
-or legal documents). The downfall of FK in this instance
-is that it only focuses on sentance length and syllable
-count over semantic complexity of the texts. An alternative
-that may be more reliable would be using Type-Toke Ratio
-(TTR). As mentioned in Lecture 3, TTR is able to give a
-simple estimate of text complexity so this may be a better
-approach. Another downfall of FK is that it lacks on the
-contextual knowledge. In Lecture 1 we discussed the emphasis
-on the need to comprehend the language properties
-beyond the surface features. An example of this could even be
-the text within PartOne.py where the FK score for the 'North
-and South' novel by Elizabeth Gaskell (1855) had a score of
-6.6552 meaning it was assessed at an older primary school/
-younger secondary school student age however it fails to
-grasp that the text is a 19th century novel and would
-require historical and cultural knowledge that often a
-higher level student (such as college or university student)
-may lack.
-
-
-also misses contextual knowledge - lect 1 discussed
-emphasis on the need to understand language properties
-beyond surface features (e.g. the novels we're looking
-into now -  it suggests north and south has a score of
-6.6552 (around older primary school age/young secondary
-school age) but it's a 19th century novel and requires
-historical and cultural knowledge that often a high level
-student (college/university level) may lack
-
+The Flesch Kincaid (FK) score is not a very reliable estimator in various scenarios.
+As discussed in Lecture 5, classification tasks are likely to involve specialised language
+(examples include scientific texts or legal documents). The downfall of FK in this instance
+is that it relies only on sentence length and syllable count, ignoring domain-specific
+vocabulary complexity.An alternative that may be more reliable is the Type-Token Ratio
+(TTR). As mentioned in Lecture 3, TTR is able to give a simple estimate of text complexity
+so this may be a better approach. Another downfall of FK is that it lacks contextual knowledge.
+In Lecture 1, we discussed the emphasis on the need to comprehend the language properties
+beyond the surface features. An example of this could even be the text within PartOne.py where
+the FK score for the 'North and South' novel by Elizabeth Gaskell (1855) had a score of
+6.6552 meaning it was assessed at an older primary school/younger secondary school student age,
+however, it fails to grasp that the text is a 19th century novel and would require historical
+and cultural knowledge that often a higher level student (such as college/university) may lack.
