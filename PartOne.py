@@ -14,13 +14,16 @@ from nltk import word_tokenize, sent_tokenize
 nlp = spacy.load("en_core_web_sm")
 nlp.max_length = 2000000
 
-def read_novels(path=Path.cwd() / "texts" / "novels"): # 1a) i. create a pandas dataframe with the following columns: text, title, author, year
+def read_novels(path=Path.cwd() / "p1-texts" / "novels"): # 1a) i. create a pandas dataframe with the following columns: text, title, author, year
     """Reads texts from a directory of .txt files and returns a DataFrame with the text, title,
     author, and year"""
 
     # get file path & use glob to find .txt files in said path
-    dirpath = r'C:\Users\karin\OneDrive - Birkbeck, University of London\5. Natural Language Processing\Coursework\p1-novels'
-    txt_files = glob.glob(os.path.join(dirpath, '*.txt'))
+    txt_files = glob.glob(str(path / "*.txt"))
+
+    # check path works ok
+    print(f"Looking for novels in: {path}")
+    print(f"Found {len(txt_files)} .txt files")
 
     data = []
 
