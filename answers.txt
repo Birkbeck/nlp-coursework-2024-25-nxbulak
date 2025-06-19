@@ -2,3 +2,20 @@
 estimator of text difficulty? Give two conditions. (Text answer, 200 words maximum)
 
 Answer:
+lect 5 - classification tasks may likely involve
+specialised language (e.g. scientific texts, legal docs etc)
+
+FK - only focus on sentance length and syllable count
+over the semantic complexity - lect 3 on type-token
+ratio (ttr) being able to give simple estimate of text
+complexity may be a better method to use
+
+also misses contextual knowledge - lect 1 discussed
+emphasis on the need to understand language properties
+beyond surface features (e.g. the novels we're looking
+into now -  it suggests north and south has a score of
+6.6552 (around older primary school age/young secondary
+school age) but it's a 19th century novel and requires
+historical and cultural knowledge that often a high level
+student (college/university level) may lack
+
