@@ -67,9 +67,6 @@ def read_novels(path=Path.cwd() / "p1-texts" / "novels"): # 1a) i. create a pand
     print(f"\nTotal novels loaded: {len(df)}")
     return df
 
-    pass
-
-
 # if __name__ == "__main__": # testing for path - PASSED
 #     from pathlib import Path
 #
@@ -134,7 +131,6 @@ def count_syl(word,
 
     return max(1, count)  # minimum 1 syllable
 
-    pass
 
 def fk_level(text,
              d):  # 1c) This function should return a dictionary mapping the title of each novel to the Flesch-Kincaid reading grade level score of the text (this func: calc FK for single text)
@@ -164,7 +160,6 @@ def fk_level(text,
 
     return 0.39 * avg_sentence_length + 11.8 * avg_syllables - 15.59  # Flesch-Kincaid Grade Level Formula - Confirmed by PN 19/06/2025
 
-    pass
 
 def get_fks(
         df):  # 1c) This function should return a dictionary mapping the title of each novel to the Flesch-Kincaid reading grade level score of the text (this func: helper to apply FK df)
@@ -239,7 +234,6 @@ def nltk_ttr(text): # 1b) This function should return a dictionary mapping the t
     ttr = len(types)/len(clean_tokens)
     return ttr
 
-    pass
 
 def get_ttrs(df): # 1b) This function should return a dictionary mapping the title of each novel to its type-token ratio
     """helper function to add ttr to a dataframe"""
@@ -310,7 +304,6 @@ def parse(df, store_path=Path.cwd() / "pickles", out_name="parsed.pickle"): # 1e
     # 1e) iii. Return the dataframe.
     return df
 
-    pass
 
 def load_parsed_df(store_path=Path.cwd() / "pickles", pickle_name="parsed.pickle"): # 1e) iv. Load the dataframe from the pickle file and use it for the remainder of this coursework part. Note: one or more of the texts may exceed the default maximum length or parse the text in sections.
     pickle_path = store_path / pickle_name
@@ -323,35 +316,35 @@ def load_parsed_df(store_path=Path.cwd() / "pickles", pickle_name="parsed.pickle
         print(f"Error: Pickle file not found in {pickle_path}")
         return None
 
-if __name__ == "__main__": # testing for question 1e) - PASSED
-    print("parse test commence")
-    print("-" * 30)
-
-    # create df for test
-    test_data = {'text': ["The owl looked at the moon.", "Operation time!" ], 'title': ["Divergent", "Animal Farm"], 'author': ["Pukinskaite", "Sergeant"], 'year': [1854, 1954]}
-    test_df = pd.DataFrame(test_data)
-
-    try:
-        import tempfile
-        from pathlib import Path
-
-        # test parse funct
-        test_dir = Path(tempfile.mkdtemp())
-        result_df = parse(test_df, store_path=test_dir, out_name = "test.pickle")
-
-        # results
-        print(f"Parse complete: {len(result_df)} rows, {len(result_df.columns)} columns")
-        print(f"First doc has {len(result_df['parsed'].iloc[0])} tokens")
-        print(f"Pickle file exists: {(test_dir / 'test.pickle').exists()}")
-
-        # test load
-        loaded_df = load_parsed_df(store_path=test_dir, pickle_name="test.pickle")
-        print(f"Loaded complete: {len(loaded_df)} rows")
-
-    except Exception as e:
-        print(f"Error: {e}")
-
-    print("parse and load_parsed_df test passed")
+# if __name__ == "__main__": # testing for question 1e) - PASSED
+#     print("parse test commence")
+#     print("-" * 30)
+#
+#     # create df for test
+#     test_data = {'text': ["The owl looked at the moon.", "Operation time!" ], 'title': ["Divergent", "Animal Farm"], 'author': ["Pukinskaite", "Sergeant"], 'year': [1854, 1954]}
+#     test_df = pd.DataFrame(test_data)
+#
+#     try:
+#         import tempfile
+#         from pathlib import Path
+#
+#         # test parse funct
+#         test_dir = Path(tempfile.mkdtemp())
+#         result_df = parse(test_df, store_path=test_dir, out_name = "test.pickle")
+#
+#         # results
+#         print(f"Parse complete: {len(result_df)} rows, {len(result_df.columns)} columns")
+#         print(f"First doc has {len(result_df['parsed'].iloc[0])} tokens")
+#         print(f"Pickle file exists: {(test_dir / 'test.pickle').exists()}")
+#
+#         # test load
+#         loaded_df = load_parsed_df(store_path=test_dir, pickle_name="test.pickle")
+#         print(f"Loaded complete: {len(loaded_df)} rows")
+#
+#     except Exception as e:
+#         print(f"Error: {e}")
+#
+#     print("parse and load_parsed_df test passed")
 
 def syntactic_objects(doc):
     """Extracts the most common syntactic objects overall in the text.""" # adjusted as per Moodle announcement.
