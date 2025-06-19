@@ -195,12 +195,6 @@ def get_fks(
 #
 #     print("-" * 30)
 
-def parse(df, store_path=Path.cwd() / "pickles", out_name="parsed.pickle"):
-    """Parses the text of a DataFrame using spaCy, stores the parsed docs as a column and writes 
-    the resulting  DataFrame to a pickle file"""
-    pass
-
-
 def nltk_ttr(text): # 1b) This function should return a dictionary mapping the title of each novel to its type-token ratio
     """Calculates the type-token ratio of a text. Text is tokenized using nltk.word_tokenize."""
 
@@ -261,6 +255,15 @@ def get_ttrs(df): # 1b) This function should return a dictionary mapping the tit
 #
 # print("\nTesting finished")
 
+def parse(df, store_path=Path.cwd() / "pickles", out_name="parsed.pickle"):
+    """Parses the text of a DataFrame using spaCy, stores the parsed docs as a column and writes
+    the resulting  DataFrame to a pickle file"""
+    pass
+
+def syntactic_objects(doc):
+    """Extracts the most common adjectives in a parsed document. Returns a list of tuples."""
+    pass
+
 def subjects_by_verb_pmi(doc, target_verb):
     """Extracts the most common subjects of a given verb in a parsed document. Returns a list."""
     pass
@@ -270,13 +273,6 @@ def subjects_by_verb_pmi(doc, target_verb):
 def subjects_by_verb_count(doc, verb):
     """Extracts the most common subjects of a given verb in a parsed document. Returns a list."""
     pass
-
-
-
-def syntactic_objects(doc):
-    """Extracts the most common adjectives in a parsed document. Returns a list of tuples."""
-    pass
-
 
 
 if __name__ == "__main__":
