@@ -120,7 +120,7 @@ def fk_level(text,
 
     sentences = sent_tokenize(text)  # split text into sentences
     words = [w for w in word_tokenize(text.lower()) if
-             w.isaplha()]  # lower case for consistency and remove punct and numbers
+             w.isalpha()]  # lower case for consistency and remove punct and numbers
 
     if len(sentences) == 0 or len(words) == 0:  # avoid / by zero
         return 0
