@@ -12,8 +12,18 @@ count over semantic complexity of the texts. An alternative
 that may be more reliable would be using Type-Toke Ratio
 (TTR). As mentioned in Lecture 3, TTR is able to give a
 simple estimate of text complexity so this may be a better
-approach. Another example
-
+approach. Another downfall of FK is that it lacks on the
+contextual knowledge. In Lecture 1 we discussed the emphasis
+on the need to comprehend the language properties
+beyond the surface features. An example of this could even be
+the text within PartOne.py where the FK score for the 'North
+and South' novel by Elizabeth Gaskell (1855) had a score of
+6.6552 meaning it was assessed at an older primary school/
+younger secondary school student age however it fails to
+grasp that the text is a 19th century novel and would
+require historical and cultural knowledge that often a
+higher level student (such as college or university student)
+may lack.
 
 
 also misses contextual knowledge - lect 1 discussed
