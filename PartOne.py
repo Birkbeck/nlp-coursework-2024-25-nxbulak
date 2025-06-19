@@ -83,6 +83,22 @@ def get_fks(df): # 1c) This function should return a dictionary mapping the titl
         results[row["title"]] = round(fk_level(row["text"], cmudict), 4)
     return results
 
+if __name__ == '__main__': # testing for question 1c) - PENDING
+
+    print("count_syl, fk_level and get_fks test commence")
+    print("-" * 30)
+
+    # download NLTK data & load CMU dict
+    nltk.download('cmudict', quiet=True)
+    nltk.download('punkt', quiet=True)
+    cmudict = nltk.corpus.cmudict.dict()
+
+    # test 1: count_syl
+    print("\n1. Testing count_syl:")
+    print("-" * 30)
+
+
+
 def read_novels(path=Path.cwd() / "texts" / "novels"): # 1a) i. create a pandas dataframe with the following columns: text, title, author, year
     """Reads texts from a directory of .txt files and returns a DataFrame with the text, title,
     author, and year"""
