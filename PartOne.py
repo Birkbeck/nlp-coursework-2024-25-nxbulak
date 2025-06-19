@@ -302,6 +302,12 @@ def parse(df, store_path=Path.cwd() / "pickles", out_name="parsed.pickle"): # 1e
     df["parsed"] = parsed_docs
 
     # 1e) ii. Serialise the resulting dataframe (i.e., write it out to disk) using the pickle format.
+    store_path.mkdir(parents = True, exist_ok = True)
+    output_path = store_path / out_name
+    df.to_pickle(output_path)
+    print(f"Dataframe serialised to: {output_path}")
+
+
 
     pass
 
