@@ -179,6 +179,21 @@ if __name__ == '__main__':  # testing for question 1c) - PENDING
     try:
         df = read_novels()
         fk_results = get_fks(df)
+        print(f"Calc FK for {len(fk_results)} novels")
+
+        # first 3 results
+        count = 0
+        for title, fk in fk_results.items():
+            print(f"'{title}' fk: {fk}")
+            count += 1
+            if count >= 3:
+                break
+        print(f"\n All fk funct passed")
+
+    except Exception as e:
+        print(f"Error: {e}")
+
+    print("-" * 30)
 
 
 def parse(df, store_path=Path.cwd() / "pickles", out_name="parsed.pickle"):
