@@ -39,6 +39,26 @@ def count_syl(word, d): # 1c) This function should return a dictionary mapping t
     Returns:
         int: The number of syllables in the word.
     """
+    word = word.lower()
+
+    if word in d: # try CMU first
+        return len([p for p in d[word][0] if p[-1].isdigit()])
+
+    # count vowel groups
+    vowels = 'aeiouy'
+    count = 0
+    prev_vowel = False
+
+    for char in word:
+        if char in vowels:
+            if not prev_vowel:
+                count += 1
+            prev_vowel = True
+        else:
+            prev_vowel = False
+
+    return max(1, count) # minimum 1 syllable
+
     pass
 
 def get_fks(df): # 1c) This function should return a dictionary mapping the title of each novel to the Flesch-Kincaid reading grade level score of the text (this func: helper to apply FK df)
