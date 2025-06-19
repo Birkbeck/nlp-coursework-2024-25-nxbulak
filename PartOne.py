@@ -312,6 +312,23 @@ def parse(df, store_path=Path.cwd() / "pickles", out_name="parsed.pickle"): # 1e
 
     pass
 
+if __name__ == "__main__": # testing for question 1e) (i. - iii) - PENDING
+    print("parse test commence")
+    print("-" * 30)
+
+    # create df for test
+    test_data = {'text': ["The owl looked at the moon.", "Operation time!" ], 'title': ["Divergent", "Animal Farm"], 'author': ["Pukinskaite", "Sergeant"], 'year': [1854, 1954]}
+    test_df = pd.DataFrame(test_data)
+
+    try:
+        import tempfile
+        from pathlib import Path
+
+        # test parse funct
+        test_dir = Path(tempfile.mkdtemp())
+
+
+
 def load_parsed_df(store_path=Path.cwd() / "pickles", pickle_name="parsed.pickle"): # 1e) iv. Load the dataframe from the pickle file and use it for the remainder of this coursework part. Note: one or more of the texts may exceed the default maximum length or parse the text in sections.
     pickle_path = store_path / pickle_name
     if pickle_path.exists():
