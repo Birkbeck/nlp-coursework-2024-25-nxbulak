@@ -9,7 +9,7 @@ import pandas as pd        # sort and organise data
 import glob                # to locate specific file type
 import os                  # to look up operating system info
 
-from nltk import word_tokenize
+from nltk import word_tokenize, sent_tokenize
 
 nlp = spacy.load("en_core_web_sm")
 nlp.max_length = 2000000
@@ -25,6 +25,10 @@ def fk_level(text, d): # 1c) This function should return a dictionary mapping th
     Returns:
         float: The Flesch-Kincaid Grade Level of the text. (higher grade is more difficult)
     """
+
+    sentences = sent_tokenize(text)
+    words
+
     pass
 
 
@@ -39,23 +43,23 @@ def count_syl(word, d): # 1c) This function should return a dictionary mapping t
     Returns:
         int: The number of syllables in the word.
     """
-    word = word.lower()
+    word = word.lower() # convert to lowercase for consistency
 
-    if word in d: # try CMU first
-        return len([p for p in d[word][0] if p[-1].isdigit()])
+    if word in d: # try CMU dict first
+        return len([p for p in d[word][0] if p[-1].isdigit()]) # count stress-marked phemones
 
-    # count vowel groups
+    # count vowel groups when word not in dict
     vowels = 'aeiouy'
     count = 0
-    prev_vowel = False
+    prev_vowel = False # check if prev character was a vowel
 
     for char in word:
-        if char in vowels:
+        if char in vowels: # only count as new syllable if prev character was not a vowel
             if not prev_vowel:
                 count += 1
             prev_vowel = True
         else:
-            prev_vowel = False
+            prev_vowel = False # consonants
 
     return max(1, count) # minimum 1 syllable
 
