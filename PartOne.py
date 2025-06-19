@@ -14,34 +14,6 @@ from nltk import word_tokenize, sent_tokenize
 nlp = spacy.load("en_core_web_sm")
 nlp.max_length = 2000000
 
-def fk_level(text, d): # 1c) This function should return a dictionary mapping the title of each novel to the Flesch-Kincaid reading grade level score of the text (this func: calc FK for single text)
-    """Returns the Flesch-Kincaid Grade Level of a text (higher grade is more difficult).
-    Requires a dictionary of syllables per word.
-
-    Args:
-        text (str): The text to analyze.
-        d (dict): A dictionary of syllables per word.
-
-    Returns:
-        float: The Flesch-Kincaid Grade Level of the text. (higher grade is more difficult)
-    """
-
-    sentences = sent_tokenize(text) # split text into sentences
-    words = [w for w in word_tokenize(text.lower()) if w.isaplha()] # lower case for consistency and remove punct and numbers
-
-    if len(sentences) == 0 or len(words) == 0: # avoid / by zero
-        return 0
-
-    total_syllables = sum(count_syl(word, d) for word in words) # count syllables across the words
-
-    # calc averages for Flesch-Kincaid
-    avg_sentence_length = len(words) / len(sentences) # words per sentence
-    avg_syllables = total_syllables / len(words) # syllables per word
-
-    return 0.39 * avg_sentence_length + 11.8 * avg_syllables - 15.59 # Flesch-Kincaid Grade Level Formula - CHECKING WITH PN ON CLARIFICATION OF FORMULA
-
-    pass
-
 def count_syl(word, d): # 1c) This function should return a dictionary mapping the title of each novel to the Flesch-Kincaid reading grade level score of the text (this func: calc syllables for words)
     """Counts the number of syllables in a word given a dictionary of syllables per word.
     if the word is not in the dictionary, syllables are estimated by counting vowel clusters
@@ -72,6 +44,34 @@ def count_syl(word, d): # 1c) This function should return a dictionary mapping t
             prev_vowel = False # consonants
 
     return max(1, count) # minimum 1 syllable
+
+    pass
+
+def fk_level(text, d): # 1c) This function should return a dictionary mapping the title of each novel to the Flesch-Kincaid reading grade level score of the text (this func: calc FK for single text)
+    """Returns the Flesch-Kincaid Grade Level of a text (higher grade is more difficult).
+    Requires a dictionary of syllables per word.
+
+    Args:
+        text (str): The text to analyze.
+        d (dict): A dictionary of syllables per word.
+
+    Returns:
+        float: The Flesch-Kincaid Grade Level of the text. (higher grade is more difficult)
+    """
+
+    sentences = sent_tokenize(text) # split text into sentences
+    words = [w for w in word_tokenize(text.lower()) if w.isaplha()] # lower case for consistency and remove punct and numbers
+
+    if len(sentences) == 0 or len(words) == 0: # avoid / by zero
+        return 0
+
+    total_syllables = sum(count_syl(word, d) for word in words) # count syllables across the words
+
+    # calc averages for Flesch-Kincaid
+    avg_sentence_length = len(words) / len(sentences) # words per sentence
+    avg_syllables = total_syllables / len(words) # syllables per word
+
+    return 0.39 * avg_sentence_length + 11.8 * avg_syllables - 15.59 # Flesch-Kincaid Grade Level Formula - CHECKING WITH PN ON CLARIFICATION OF FORMULA
 
     pass
 
