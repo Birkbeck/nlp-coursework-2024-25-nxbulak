@@ -1,5 +1,5 @@
 #Re-assessment template 2025
-# for pull to laptop
+# commit and push to transfer back to PC
 # Note: The template functions here and the dataframe format for structuring your solution is a suggested but not mandatory approach. You can use a different approach if you like, as long as you clearly answer the questions and communicate your answers clearly.
 
 import nltk                # import Natural Language Toolkit
