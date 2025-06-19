@@ -307,7 +307,8 @@ def parse(df, store_path=Path.cwd() / "pickles", out_name="parsed.pickle"): # 1e
     df.to_pickle(output_path)
     print(f"Dataframe serialised to: {output_path}")
 
-
+    # 1e) iii. Return the dataframe.
+    return df
 
     pass
 
