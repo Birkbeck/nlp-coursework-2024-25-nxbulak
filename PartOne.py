@@ -104,7 +104,10 @@ if __name__ == '__main__': # testing for question 1c) - PENDING
     # test 2: fk_level
     print("\n1. Testing fk_level:")
     print("-" * 30)
-
+    test_texts = ["The owl looked at the moon. It sighed!", "Wherever the river may flow, it will always lead back to the sea."]
+    for text in test_texts:
+        fk_score = fk_level(text, cmudict)
+        print(f"'{text}' fk_score: {fk_score:.4f}")
 
 
 
