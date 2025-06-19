@@ -96,6 +96,15 @@ if __name__ == '__main__': # testing for question 1c) - PENDING
     # test 1: count_syl
     print("\n1. Testing count_syl:")
     print("-" * 30)
+    test_words = ["hello", "beans", "lullaby"]
+    for word in test_words:
+        syllables = count_syl(word, cmudict)
+        print(f"'{word}' syllables: {syllables}")
+
+    # test 2: fk_level
+    print("\n1. Testing fk_level:")
+    print("-" * 30)
+
 
 
 
