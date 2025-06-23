@@ -270,7 +270,7 @@ def subjects_by_verb_pmi(doc, target_verb): # 1f) iii. The title of each novel a
 
     return [(subject, count) for subject, pmi, count in pmi_scores[:10]]
 
-if __name__ == "__main__":
+if __name__ == "__main__": # pre-written tests
     """
     uncomment the following lines to run the functions once you have completed them
     """
