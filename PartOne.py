@@ -7,6 +7,7 @@ import spacy               # import spaCy
 import pandas as pd        # sort and organise data
 import glob                # to locate specific file type
 import os                  # to look up operating system info
+import math                # mathematical functions (PMI)
 
 from nltk import word_tokenize, sent_tokenize   # to split text into words and sentences
 from pathlib import Path                        # to access files in other directories
@@ -346,8 +347,16 @@ def load_parsed_df(store_path=Path.cwd() / "pickles", pickle_name="parsed.pickle
 #
 #     print("parse and load_parsed_df test passed")
 
-def syntactic_objects(doc):
+def syntactic_objects(doc): # 1f) i. The title of each novel and a list of the ten most common syntactic objects overall in the text.
     """Extracts the most common syntactic objects overall in the text.""" # adjusted as per Moodle announcement.
+    syn_objects = []
+
+    for token in doc: # go through all tokens in parsed doc
+        if token.dep_ == 'dobj': # capture direct object
+            syn_objects.append(token.lemma_.lower())
+
+    syn_objects_count = Counter(syn_objects)
+    return syn_objects_count.most_common(10)
     pass
 
 def subjects_by_verb_pmi(doc, target_verb):
