@@ -352,20 +352,27 @@ def syntactic_objects(doc): # 1f) i. The title of each novel and a list of the t
     syn_objects = []
 
     for token in doc: # go through all tokens in parsed doc
-        if token.dep_ == 'dobj': # capture direct object
+        if token.dep_ == 'dobj': # capture direct objects
             syn_objects.append(token.lemma_.lower())
 
     syn_objects_count = Counter(syn_objects)
     return syn_objects_count.most_common(10)
-    pass
+
+def subjects_by_verb_count(doc, verb): # 1f) ii. The title of each novel and a list of the ten most common syntactic subjects of the veb 'to hear' (in any tense) in the text, ordered by their frequency.
+    """Extracts the most common subjects of a given verb in a parsed document. Returns a list."""
+    subjects = []
+
+    for token in doc: # go through all tokens in parsed doc
+        if token.lemma_.lower() == verb.lower(): # look for subjects related to verb
+            for child in token.children: # tenses checked
+                if child.dep_ == ['nsubj', 'nsubjpass', 'csubj', 'csubjpass']:
+                    subjects.append(child.lemma_.lower())
+
+    subjects_count = Counter(subjects)
+    return subjects_count.most_common(10)
+
 
 def subjects_by_verb_pmi(doc, target_verb):
-    """Extracts the most common subjects of a given verb in a parsed document. Returns a list."""
-    pass
-
-
-
-def subjects_by_verb_count(doc, verb):
     """Extracts the most common subjects of a given verb in a parsed document. Returns a list."""
     pass
 
