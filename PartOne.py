@@ -162,42 +162,6 @@ def get_ttrs(df): # 1b) This function should return a dictionary mapping the tit
         results[row["title"]] = nltk_ttr(row["text"])
     return results
 
-# if __name__ == "__main__": # testing for question 1b) - PASSED
-#     print("nltk_ttr & get_ttrs testing commence")
-#
-#     # test 1: nltk_ttr function - string test: PASSED
-#     print("\n1. Testing nltk_ttr:")
-#     print("-" * 30)
-#
-#     test_text1 = "The owl looked at the moon. It then sighed!"
-#     result1 = nltk_ttr(test_text1)
-#     print(f"Text: '{test_text1}'")
-#     print(f"TTR: {result1}")
-#     print(f"Expected: ~0.889 (8 unique / 9 total, no punctuation included)")
-#
-#     # test 2: get_ttrs function on novels
-#     print("\n2. Testing get_ttrs:")
-#     print("-" * 30)
-#
-#     try:
-#         df = read_novels()
-#         ttr_results = get_ttrs(df)
-#         print(f"Calculated ttr results for {len(ttr_results)} novels")
-#         print(f"Sample results:")
-#
-#         # show first  results
-#         count = 0
-#         for title, ttr in ttr_results.items():
-#             print(f"{title}: {ttr:.4f}")
-#             count += 1
-#             if count >= 3:
-#                 break
-#
-#     except Exception as e:
-#         print(f"Error: {e}")
-#
-# print("\nTesting finished")
-
 def parse(df, store_path=Path.cwd() / "pickles", out_name="parsed.pickle"): # 1e) parse: The goal of this function is to process the texts with spaCy's tokenizer and parser, and store the processed texts.
     """Parses the text of a DataFrame using spaCy, stores the parsed docs as a column and writes
     the resulting  DataFrame to a pickle file"""
@@ -455,3 +419,39 @@ if __name__ == "__main__":
 #         print(f"Error: {e}")
 #
 #     print("-" * 30)
+
+# if __name__ == "__main__": # testing for question 1b) - PASSED
+#     print("nltk_ttr & get_ttrs testing commence")
+#
+#     # test 1: nltk_ttr function - string test: PASSED
+#     print("\n1. Testing nltk_ttr:")
+#     print("-" * 30)
+#
+#     test_text1 = "The owl looked at the moon. It then sighed!"
+#     result1 = nltk_ttr(test_text1)
+#     print(f"Text: '{test_text1}'")
+#     print(f"TTR: {result1}")
+#     print(f"Expected: ~0.889 (8 unique / 9 total, no punctuation included)")
+#
+#     # test 2: get_ttrs function on novels
+#     print("\n2. Testing get_ttrs:")
+#     print("-" * 30)
+#
+#     try:
+#         df = read_novels()
+#         ttr_results = get_ttrs(df)
+#         print(f"Calculated ttr results for {len(ttr_results)} novels")
+#         print(f"Sample results:")
+#
+#         # show first  results
+#         count = 0
+#         for title, ttr in ttr_results.items():
+#             print(f"{title}: {ttr:.4f}")
+#             count += 1
+#             if count >= 3:
+#                 break
+#
+#     except Exception as e:
+#         print(f"Error: {e}")
+#
+# print("\nTesting finished")
