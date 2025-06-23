@@ -401,7 +401,21 @@ def subjects_by_verb_pmi(doc, target_verb): # 1f) iii. The title of each novel a
 
     for (verb, subject), pair_count in pair_counts.items():
         if verb == target_verb_lower and pair_count >= 1: # min
-            p_verb_subject = pair_count / total_pairs if total_pairs > 0 else 0 # P(verb, subject)
+            # P(verb, subject)
+            p_verb_subject = pair_count / total_pairs if total_pairs > 0 else 0
+
+            # P(verb) and P(subject)
+            p_verb = verb_counts[target_verb_lower] / total_verbs if total_verbs > 0 else 0
+            p_subject = subject_counts[subject] / total_subjects if total_subjects > 0 else 0
+
+            # PMI = log(P(verb, subject) / (P(verb * P(subject)))
+            if p_verb > 0 and p_subject > 0 and p_verb_subject > 0:
+                pmi = math.log(p_verb_subject / (p_verb * p_subject))
+                pmi_scores.append((subject, pmi, pair_count))
+
+    pmi_scores.sort(key = lambda x: x[1], reverse = True) # sort descending and return top 10
+
+    return [(subject, count) for subject, pmi, count in pmi_scores[:10]]
 
 
 
