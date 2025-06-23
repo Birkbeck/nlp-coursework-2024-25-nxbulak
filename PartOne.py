@@ -365,15 +365,28 @@ def subjects_by_verb_count(doc, verb): # 1f) ii. The title of each novel and a l
     for token in doc: # go through all tokens in parsed doc
         if token.lemma_.lower() == verb.lower(): # look for subjects related to verb
             for child in token.children: # tenses checked
-                if child.dep_ == ['nsubj', 'nsubjpass', 'csubj', 'csubjpass']:
+                if child.dep_ in ['nsubj', 'nsubjpass', 'csubj', 'csubjpass']:
                     subjects.append(child.lemma_.lower())
 
     subjects_count = Counter(subjects)
     return subjects_count.most_common(10)
 
 
-def subjects_by_verb_pmi(doc, target_verb):
+def subjects_by_verb_pmi(doc, target_verb): # 1f) iii. The title of each novel and a list of the ten most common syntactic subjects of the verb 'to hear' (in any tense) in the text, ordered by their Pointwise Mutual Information.
     """Extracts the most common subjects of a given verb in a parsed document. Returns a list."""
+    verb_subject_pairs = []
+    all_verbs = []
+    all_subjects = []
+
+    for token in doc: # collect all verbs
+        if token.pos_ == 'VERB':
+            all_verbs.append(token.lemma_.lower())
+        if token.dep_ in ['nsubj', 'nsubjpass', 'csubj', 'csubjpass']: # collect all subjects
+            all_subjects.append(token.lemma_.lower())
+            if token.head.lemma_.lower() == target_verb.lower(): # check subj related to target verb
+                verb_subject_pairs.append((target_verb.lower(), token.lemma_.lower()))
+
+
     pass
 
 
