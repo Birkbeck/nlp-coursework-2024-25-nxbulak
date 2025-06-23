@@ -431,7 +431,7 @@ if __name__ == "__main__":
     print(get_ttrs(df))
     print(get_fks(df))
     df = pd.read_pickle(Path.cwd() / "pickles" / "parsed.pickle")
-    #print(syntactic_objects(df)) # leads to errors as it's calling a df - not question specified changed to below instead
+    #print(syntactic_objects(df)) # leads to errors as it's calling a df - not required in question specified - changed to below instead
 
     for i, row in df.iterrows():
         print(row["title"])
@@ -448,4 +448,10 @@ if __name__ == "__main__":
         print(subjects_by_verb_pmi(row["parsed"], "hear"))
         print("\n")
 
+    print("Testing syntactic obj funct. with simple sentence")
+    print("-" * 30)
+    test_doc = nlp("She read the book. He saw her. They heard nothing.")
+    for token in test_doc:
+        if token.dep_ == 'dobj':
+            print(f"Direct object: {token.text} (head: {token.head.text})")
 
