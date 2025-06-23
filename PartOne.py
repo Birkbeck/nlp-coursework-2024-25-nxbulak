@@ -200,36 +200,6 @@ def load_parsed_df(store_path=Path.cwd() / "pickles", pickle_name="parsed.pickle
         print(f"Error: Pickle file not found in {pickle_path}")
         return None
 
-# if __name__ == "__main__": # testing for question 1e) - PASSED
-#     print("parse test commence")
-#     print("-" * 30)
-#
-#     # create df for test
-#     test_data = {'text': ["The owl looked at the moon.", "Operation time!" ], 'title': ["Divergent", "Animal Farm"], 'author': ["Pukinskaite", "Sergeant"], 'year': [1854, 1954]}
-#     test_df = pd.DataFrame(test_data)
-#
-#     try:
-#         import tempfile
-#         from pathlib import Path
-#
-#         # test parse funct
-#         test_dir = Path(tempfile.mkdtemp())
-#         result_df = parse(test_df, store_path=test_dir, out_name = "test.pickle")
-#
-#         # results
-#         print(f"Parse complete: {len(result_df)} rows, {len(result_df.columns)} columns")
-#         print(f"First doc has {len(result_df['parsed'].iloc[0])} tokens")
-#         print(f"Pickle file exists: {(test_dir / 'test.pickle').exists()}")
-#
-#         # test load
-#         loaded_df = load_parsed_df(store_path=test_dir, pickle_name="test.pickle")
-#         print(f"Loaded complete: {len(loaded_df)} rows")
-#
-#     except Exception as e:
-#         print(f"Error: {e}")
-#
-#     print("parse and load_parsed_df test passed")
-
 def syntactic_objects(doc): # 1f) i. The title of each novel and a list of the ten most common syntactic objects overall in the text.
     """Extracts the most common syntactic objects overall in the text.""" # adjusted as per Moodle announcement.
     syn_objects = []
@@ -455,3 +425,33 @@ if __name__ == "__main__":
 #         print(f"Error: {e}")
 #
 # print("\nTesting finished")
+
+# if __name__ == "__main__": # testing for question 1e) - PASSED
+#     print("parse test commence")
+#     print("-" * 30)
+#
+#     # create df for test
+#     test_data = {'text': ["The owl looked at the moon.", "Operation time!" ], 'title': ["Divergent", "Animal Farm"], 'author': ["Pukinskaite", "Sergeant"], 'year': [1854, 1954]}
+#     test_df = pd.DataFrame(test_data)
+#
+#     try:
+#         import tempfile
+#         from pathlib import Path
+#
+#         # test parse funct
+#         test_dir = Path(tempfile.mkdtemp())
+#         result_df = parse(test_df, store_path=test_dir, out_name = "test.pickle")
+#
+#         # results
+#         print(f"Parse complete: {len(result_df)} rows, {len(result_df.columns)} columns")
+#         print(f"First doc has {len(result_df['parsed'].iloc[0])} tokens")
+#         print(f"Pickle file exists: {(test_dir / 'test.pickle').exists()}")
+#
+#         # test load
+#         loaded_df = load_parsed_df(store_path=test_dir, pickle_name="test.pickle")
+#         print(f"Loaded complete: {len(loaded_df)} rows")
+#
+#     except Exception as e:
+#         print(f"Error: {e}")
+#
+#     print("parse and load_parsed_df test passed")
