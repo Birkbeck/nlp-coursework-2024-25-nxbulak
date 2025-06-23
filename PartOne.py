@@ -397,6 +397,12 @@ def subjects_by_verb_pmi(doc, target_verb): # 1f) iii. The title of each novel a
 
     # PMI for each subject with target verb
     pmi_scores = []
+    target_verb_lower = target_verb.lower()
+
+    for (verb, subject), pair_count in pair_counts.items():
+        if verb == target_verb_lower and pair_count >= 1: # min
+            p_verb_subject = pair_count / total_pairs if total_pairs > 0 else 0 # P(verb, subject)
+
 
 
 
