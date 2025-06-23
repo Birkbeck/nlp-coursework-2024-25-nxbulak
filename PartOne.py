@@ -139,55 +139,6 @@ def get_fks(
         results[row["title"]] = round(fk_level(row["text"], cmudict), 4)
     return results
 
-# if __name__ == '__main__':  # testing for question 1c) - PASSED
-#
-#     print("count_syl, fk_level and get_fks test commence")
-#     print("-" * 30)
-#
-#     # download NLTK data & load CMU dict
-#     nltk.download('cmudict', quiet=True)
-#     nltk.download('punkt', quiet=True)
-#     cmudict = nltk.corpus.cmudict.dict()
-#
-#     # test 1: count_syl
-#     print("\n1. Testing count_syl:")
-#     print("-" * 30)
-#     test_words = ["hello", "beans", "lullaby"]
-#     for word in test_words:
-#         syllables = count_syl(word, cmudict)
-#         print(f"'{word}' syllables: {syllables}")
-#
-#     # test 2: fk_level
-#     print("\n2. Testing fk_level:")
-#     print("-" * 30)
-#     test_texts = ["The owl looked at the moon. It sighed!",
-#                   "Wherever the river may flow, it will always lead back to the sea."]
-#     for text in test_texts:
-#         fk_score = fk_level(text, cmudict)
-#         print(f"'{text}' fk_score: {fk_score:.4f}")
-#
-#     # test 3: get_fks
-#     print("\n3. Testing get_fks:")
-#     print("-" * 30)
-#     try:
-#         df = read_novels()
-#         fk_results = get_fks(df)
-#         print(f"Calc FK for {len(fk_results)} novels")
-#
-#         # first 3 results
-#         count = 0
-#         for title, fk in fk_results.items():
-#             print(f"'{title}' fk: {fk}")
-#             count += 1
-#             if count >= 3:
-#                 break
-#         print(f"\n All fk funct passed")
-#
-#     except Exception as e:
-#         print(f"Error: {e}")
-#
-#     print("-" * 30)
-
 def nltk_ttr(text): # 1b) This function should return a dictionary mapping the title of each novel to its type-token ratio
     """Calculates the type-token ratio of a text. Text is tokenized using nltk.word_tokenize."""
 
@@ -455,3 +406,52 @@ if __name__ == "__main__":
 #     df = read_novels()
 #     print(df.columns.tolist())
 #     print(df[['title', 'author', 'year']].head())
+
+# if __name__ == '__main__':  # testing for question 1c) - PASSED
+#
+#     print("count_syl, fk_level and get_fks test commence")
+#     print("-" * 30)
+#
+#     # download NLTK data & load CMU dict
+#     nltk.download('cmudict', quiet=True)
+#     nltk.download('punkt', quiet=True)
+#     cmudict = nltk.corpus.cmudict.dict()
+#
+#     # test 1: count_syl
+#     print("\n1. Testing count_syl:")
+#     print("-" * 30)
+#     test_words = ["hello", "beans", "lullaby"]
+#     for word in test_words:
+#         syllables = count_syl(word, cmudict)
+#         print(f"'{word}' syllables: {syllables}")
+#
+#     # test 2: fk_level
+#     print("\n2. Testing fk_level:")
+#     print("-" * 30)
+#     test_texts = ["The owl looked at the moon. It sighed!",
+#                   "Wherever the river may flow, it will always lead back to the sea."]
+#     for text in test_texts:
+#         fk_score = fk_level(text, cmudict)
+#         print(f"'{text}' fk_score: {fk_score:.4f}")
+#
+#     # test 3: get_fks
+#     print("\n3. Testing get_fks:")
+#     print("-" * 30)
+#     try:
+#         df = read_novels()
+#         fk_results = get_fks(df)
+#         print(f"Calc FK for {len(fk_results)} novels")
+#
+#         # first 3 results
+#         count = 0
+#         for title, fk in fk_results.items():
+#             print(f"'{title}' fk: {fk}")
+#             count += 1
+#             if count >= 3:
+#                 break
+#         print(f"\n All fk funct passed")
+#
+#     except Exception as e:
+#         print(f"Error: {e}")
+#
+#     print("-" * 30)
