@@ -386,6 +386,19 @@ def subjects_by_verb_pmi(doc, target_verb): # 1f) iii. The title of each novel a
             if token.head.lemma_.lower() == target_verb.lower(): # check subj related to target verb
                 verb_subject_pairs.append((target_verb.lower(), token.lemma_.lower()))
 
+    pair_counts = Counter(verb_subject_pairs)
+    verb_counts = Counter(all_verbs)
+    subject_counts = Counter(all_subjects)
+
+    # totals for PMI
+    total_pairs = len(verb_subject_pairs)
+    total_verbs = len(all_verbs)
+    total_subjects = len(all_subjects)
+
+    # PMI for each subject with target verb
+    pmi_scores = []
+
+
 
     pass
 
