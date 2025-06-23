@@ -431,7 +431,12 @@ if __name__ == "__main__":
     print(get_ttrs(df))
     print(get_fks(df))
     df = pd.read_pickle(Path.cwd() / "pickles" / "parsed.pickle")
-    print(syntactic_objects(df))
+    #print(syntactic_objects(df)) # leads to errors as it's calling a df - not question specified changed to below instead
+
+    for i, row in df.iterrows():
+        print(row["title"])
+        print(syntactic_objects(row["parsed"]))
+        print("\n")
 
     for i, row in df.iterrows():
         print(row["title"])
