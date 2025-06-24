@@ -102,6 +102,8 @@ def political_phrases(): # for better context when implementing funct for 2e)
     # get prominent phrases
     prominent_phrases = phrase_vectoriser.get_feature_names_out()
 
+    return prominent_phrases.tolist()
+
 if __name__ == "__main__":
     # Testing for 2a) - PASSED
     # print("Testing 2a")
@@ -136,3 +138,5 @@ if __name__ == "__main__":
     # print( "Testing 2d")
     # print("-" * 30)
     # classifier_train(ngram_range = (1,3))
+
+    # Testing political_phrases - PENDING
