@@ -128,12 +128,12 @@ def custom_tokenizer(text): # 2e) Implement a new custom tokenizer and pass it t
     return tokens
 
 if __name__ == "__main__":
-    # Testing for 2a) - PASSED
+    # # Testing for 2a) - PASSED
     # print("Testing 2a")
     # print("-" * 30)
     # df = read_csv()
 
-    # Testing for 2b) - PASSED
+    # # Testing for 2b) - PASSED
     # print("Testing 2b")
     # print("-" * 30)
     # result = vectorise_speeches()
@@ -149,19 +149,19 @@ if __name__ == "__main__":
     # else:
     #     print("Error: vectoriser failed")
 
-    # Testing for 2c) - PASSED
+    # # Testing for 2c) - PASSED
     # print("Testing 2c")
     # print("-" * 30)
     # classifier_train(ngram_range = (1,1))
     # print("\n" + "-" * 30)
     # print("Passed")
 
-    # Testing for 2d) - PASSED
+    # # Testing for 2d) - PASSED
     # print("Testing 2d")
     # print("-" * 30)
     # classifier_train(ngram_range = (1,3))
 
-    # Testing political_phrases - PASSED
+    # # Testing political_phrases - PASSED
     # print("Testing political_phrases")
     # print("-" * 30)
     #
@@ -182,26 +182,26 @@ if __name__ == "__main__":
     # print("\n" + "-" * 30)
     # print("Passed")
 
-    # Testing custom_tokenizer
-    print("Testing custom_tokenizer")
-    print("-" * 30)
-
-    # NOTE: below text is randomly selected and pasted from CSV document provided for part two
-    test_text = """No constituency in the country has such a high concentration of first-rate pubs as Ipswich, and currently in Ipswich we have very low levels of covid 19. Last weekend, I spoke to the landlord of the Belstead Arms in Chantry, who had to watch as many of his loyal customers, who would have been spending hundreds of pounds in his pub supporting the pub to recover from the previous lockdown, went to the off-licence across the street to buy beer from there. Will my right hon. Friend assure me that at the closest possible time he will review measures and ensure that pubs in Ipswich can stay open later?"""
-
-    print("Original text:")
-    print(test_text)
-    print()
-
-    tokens = custom_tokenizer(test_text)
-    print("Tokenized text:")
-    print(tokens)
-    print()
-
-    political_phrases = [token for token in tokens if '_' in token] # check political phrases combined as text has covid 19
-    print(f"Political phrases found: {len(political_phrases)}")
-    for phrase in political_phrases:
-        print(f"Political phrase: {phrase}")
-
-    print("\n" + "-" * 30)
-    print("Passed")
+    # # Testing custom_tokenizer
+    # print("Testing custom_tokenizer")
+    # print("-" * 30)
+    #
+    # # NOTE: below text is randomly selected and pasted from CSV document provided for part two
+    # test_text = """No constituency in the country has such a high concentration of first-rate pubs as Ipswich, and currently in Ipswich we have very low levels of covid 19. Last weekend, I spoke to the landlord of the Belstead Arms in Chantry, who had to watch as many of his loyal customers, who would have been spending hundreds of pounds in his pub supporting the pub to recover from the previous lockdown, went to the off-licence across the street to buy beer from there. Will my right hon. Friend assure me that at the closest possible time he will review measures and ensure that pubs in Ipswich can stay open later?"""
+    #
+    # print("Original text:")
+    # print(test_text)
+    # print()
+    #
+    # tokens = custom_tokenizer(test_text)
+    # print("Tokenized text:")
+    # print(tokens)
+    # print()
+    #
+    # political_phrases = [token for token in tokens if '_' in token] # check political phrases combined as text has covid 19
+    # print(f"Political phrases found: {len(political_phrases)}")
+    # for phrase in political_phrases:
+    #     print(f"Political phrase: {phrase}")
+    #
+    # print("\n" + "-" * 30)
+    # print("Passed")
