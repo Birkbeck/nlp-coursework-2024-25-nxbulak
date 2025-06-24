@@ -20,6 +20,9 @@ def read_csv(csv_path=Path.cwd() / "p2-texts" / "hansard40000.csv"): # 2a) Read 
     most_common_parties = df['party'].value_counts().head(4).index.tolist()
     df = df[df['party'].isin(most_common_parties)]
 
+    # 2a) iii. remove any rows where the value in the 'speech_class' column is not 'Speech'
+    df = df[df['speech_class'] != 'Speech']
+
     print(df.shape)
     return df # show original df
 
