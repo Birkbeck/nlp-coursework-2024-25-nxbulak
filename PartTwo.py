@@ -134,6 +134,27 @@ def classifier_train_custom(): # 2e) Train new custom tokenizer using political 
         print("Error: Data not found")
         return None
 
+    # get features and labels using approach learned in scikit-learn in lab 4
+    X = df['speech']
+    y = df['party']
+
+    # TfidfVectorizer but with custom tokenizer
+    vectoriser = TfidfVectorizer(stop_words = 'english', # omitting English stopwords
+                                 max_features = 3000, # max_features set to 3000
+                                 tokenizer = custom_tokenizer) # custom tokenizer with found political phrases
+
+    # vectorise speeches
+    X_vectorised = vectoriser.fit_transform(X)
+
+    # split data into a train and test set
+    X_train, X_test, y_train, y_test = train_test_split(X_vectorised,
+                                                        y,
+                                                        test_size = 0.25,
+                                                        stratify = y,
+                                                        random_state= 26) # random seed 26
+
+    return X_train, X_test, y_train, y_test, vectoriser
+
 
 if __name__ == "__main__":
     # # Testing for 2a) - PASSED
