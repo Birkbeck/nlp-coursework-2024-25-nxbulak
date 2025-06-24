@@ -48,7 +48,7 @@ def vectorise_speeches(use_ngrams = False): # 2b) Vectorise the speeches using T
     if use_ngrams:
         vectoriser = TfidfVectorizer(stop_words = 'english', # omitting English stopwords
                                      max_features = 3000, # max_features set to 3000
-                                     ngram_range = ngram_range) # 2d) adjust the parameters of the Tfidfvectorizer so that unigrams, bi-grams and tri-grams will be considered features
+                                     ngram_range = (1, 3)) # 2d) adjust the parameters of the Tfidfvectorizer so that unigrams, bi-grams and tri-grams will be considered features
     else:
         vectoriser = TfidfVectorizer(stop_words = 'english',
                                      max_features = 3000)
