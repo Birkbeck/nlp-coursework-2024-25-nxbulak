@@ -182,6 +182,10 @@ def classifier_train_custom(): # 2e) Train new custom tokenizer using political 
     return best_f1, best_name
 
 if __name__ == "__main__":
+    # 2a) Print the dimensions of the resulting dataframe using the shape method.
+    df = read_csv()
+    if df is not None:
+        print(f"Dataframe dimensions: {df.shape}")
 
 #if __name__ == "__main__": # For testing
     # # Testing for 2a) - PASSED
