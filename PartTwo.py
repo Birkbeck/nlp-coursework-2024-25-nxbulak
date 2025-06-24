@@ -2,22 +2,25 @@ import pandas as pd # sort and organise data
 
 from pathlib import Path # to access files in other directories
 
-def read_csv(csv_path=Path.cwd() / "p2-texts" / "hansard40000.csv", verbose=False): # 2a) Read the handsard40000.csv dataset in the texts directory into a dataframe. Sub-set and rename the dataframe as follows:
+def read_csv(csv_path=Path.cwd() / "p2-texts" / "hansard40000.csv"): # 2a) Read the handsard40000.csv dataset in the texts directory into a dataframe. Sub-set and rename the dataframe as follows:
     # check path works
     if not csv_path.exists():
         print(f"Error: {csv_path} does not exist!")
         return None
-
-    # read csv
-    print(f"Reading csv in: {csv_path}")
+    # read csv & prints for testing
+    #print(f"Reading csv in: {csv_path}")
     df = pd.read_csv(csv_path)
-    print(f"Dataframe pre adjustment: {df.shape}")
+    #print(f"Dataframe pre adjustment: {df.shape}")
 
+    # 2a) i. rename the 'Labour (Co-op)' value in party column to 'Labour', and then:
+    df['party'] = df ['party'].replace('Labour (Co-op)', 'Labour')
+
+    print(df.shape)
     return df # show original df
 
 
 if __name__ == "__main__":
-    # Testing for 2a)
+    #Testing for 2a) - PASSED
     print("Testing 2a")
     print("-" * 30)
 
@@ -26,5 +29,8 @@ if __name__ == "__main__":
     if df is not None:
         print("csv loaded")
         print(f"Columns: {df.columns.tolist()}")
+        print("\nFirst 10 rows:")
+        print(df.head(10))
+        print(f"\nUnique parties in df: {df['party'].unique()}") # check party names have been changed
     else:
         print("Error: could not load")
