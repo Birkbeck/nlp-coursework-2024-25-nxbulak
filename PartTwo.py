@@ -1,8 +1,11 @@
 import pandas as pd # sort and organise data
 
 from pathlib import Path # to access files in other directories
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import TfidfVectorizer # for 2b)
+from sklearn.model_selection import train_test_split # for 2b)
+from sklearn.ensemble import RandomForestClassifier # for 2c)
+from sklearn.svm import LinearSVC # for 2c)
+from sklearn.metrics import f1_score, classification_report # for 2c)
 
 def read_csv(csv_path=Path.cwd() / "p2-texts" / "hansard40000.csv"): # 2a) Read the handsard40000.csv dataset in the texts directory into a dataframe. Sub-set and rename the dataframe as follows:
     # check path works
@@ -55,6 +58,16 @@ def vectorise_speeches(): # 2b) Vectorise the speeches using TfidfVectorizer fro
                                                         random_state= 26) # random seed 26
 
     return X_train, X_test, y_train, y_test, vectoriser
+
+def classifier_train(): # 2c) Train RandomForest (with n_estimators = 300) and SVM with linear kernel classifiers on the training set, and print the scikit-learn macro-average f1 score and classification report for each classifier on the test set. The label that you are trying to predict is the 'party' value.
+    result = vectorise_speeches()
+
+    if result is None:
+        return None
+
+    X_train, X_test, y_train, y_test, vectoriser = result
+
+
 
 if __name__ == "__main__":
     # Testing for 2a) - PASSED
