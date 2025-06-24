@@ -7,6 +7,9 @@ p2-texts/
 *.pickle
 pickles/
 
+# part two - csv file
+*.csv
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
