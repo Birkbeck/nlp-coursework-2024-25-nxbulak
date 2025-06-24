@@ -106,6 +106,14 @@ def political_phrases(): # for better context when implementing funct for 2e)
     return prominent_phrases.tolist()
 
 def custom_tokenizer(text): # 2e) Implement a new custom tokenizer and pass it to the tokenizer argument of TfidfVectorizer.
+    text = text.lower()
+
+    # implement top 30 phrases found in political_phrases
+    political_phrases = ['armed forces', 'covid 19', 'deputy speaker', 'european union', 'friend member', 'hon friend',
+                         'hon friend member', 'hon gentleman', 'hon lady', 'hon member', 'hon members', 'human rights',
+                         'local authorities', 'long term', 'make sure', 'mental health', 'new clause', 'northern ireland',
+                         'pay tribute', 'prime minister', 'public health', 'right hon', 'right hon friend', 'right hon member',
+                         'secretary state', 'social care', 'uk government', 'united kingdom', 'universal credit', 'young people']
 
 if __name__ == "__main__":
     # Testing for 2a) - PASSED
