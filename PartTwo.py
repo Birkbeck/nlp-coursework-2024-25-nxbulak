@@ -36,6 +36,15 @@ def vectorise_speeches(): # 2b) Vectorise the speeches using TfidfVectorizer fro
         print("Error: Data not found")
         return None
 
+    # get features and labels using approach learned in scikit-learn in lab 4
+    X = df['speech']
+    y = df['party']
+
+    # TfidfVectorizer
+    vectoriser = TfidfVectorizer(stop_words = 'english', # omitting English stopwords
+                                 max_features = 3000) # max_features set to 3000
+
+    # vectorise speeches
 
 if __name__ == "__main__":
     #Testing for 2a) - PASSED
