@@ -15,3 +15,8 @@ the FK score for the 'North and South' novel by Elizabeth Gaskell (1855) had a s
 6.6552 meaning it was assessed at an older primary school/younger secondary school student age,
 however, it fails to grasp that the text is a 19th century novel and would require historical
 and cultural knowledge that often a higher level student (such as college/university) may lack.
+
+2f) Explain your tokenizer function and discuss its performance.
+
+Answer:
+When implementing my

@@ -182,6 +182,8 @@ def classifier_train_custom(): # 2e) Train new custom tokenizer using political 
     return best_f1, best_name
 
 if __name__ == "__main__":
+
+#if __name__ == "__main__": # For testing
     # # Testing for 2a) - PASSED
     # print("Testing 2a")
     # print("-" * 30)
@@ -203,17 +205,17 @@ if __name__ == "__main__":
     # else:
     #     print("Error: vectoriser failed")
 
-    # Testing for 2c) - PASSED
-    print("Testing 2c")
-    print("-" * 30)
-    classifier_train(ngram_range = (1,1))
-    print("\n" + "-" * 30)
-    print("Passed")
-
-    # Testing for 2d) - PASSED
-    print("Testing 2d")
-    print("-" * 30)
-    classifier_train(ngram_range = (1,3))
+    # # Testing for 2c) - PASSED
+    # print("Testing 2c")
+    # print("-" * 30)
+    # classifier_train(ngram_range = (1,1))
+    # print("\n" + "-" * 30)
+    # print("Passed")
+    #
+    # # Testing for 2d) - PASSED
+    # print("Testing 2d")
+    # print("-" * 30)
+    # classifier_train(ngram_range = (1,3))
 
     # # Testing political_phrases - PASSED
     # print("Testing political_phrases")
@@ -255,16 +257,14 @@ if __name__ == "__main__":
     # print("\n" + "-" * 30)
     # print("Passed")
 
-    # Testing classifier_train_custom - PENDING
-    print("Testing classifier_train_custom")
-    print("-" * 30)
-
-    result = classifier_train_custom()
-
-    if result is not None:
-        best_f1, best_name = result
-        print("-" * 30)
-        print(f"Best performing classifier: {best_name}")
-        print(f"Best f1 score: {best_f1}")
-    print("\n" + "-" * 30)
-    print("Passed")
+    # # Testing classifier_train_custom - PASSED
+    # print("Testing classifier_train_custom")
+    # print("-" * 30)
+    # result = classifier_train_custom()
+    # if result is not None:
+    #     best_f1, best_name = result
+    #     print("-" * 30)
+    #     print(f"Best performing classifier: {best_name}")
+    #     print(f"Best f1 score: {best_f1}")
+    # print("\n" + "-" * 30)
+    # print("Passed")
