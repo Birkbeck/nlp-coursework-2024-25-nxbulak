@@ -192,13 +192,18 @@ if __name__ == "__main__":
 
     # 2b) No print request
 
-    # 2c) Print the scikit-learn macro-average f1 score and classification report for each classifier on the test set
-    classifier_train()
+    # 2c) Print the scikit-learn macro-average f1 score and classification report for each classifier on the test set.
+    classifier_train(use_ngrams = False)
 
-    # 2d) Print the classification report as in 2(c) again using these parameters
-    classifier_train
+    # 2d) Print the classification report as in 2(c) again using these parameters.
+    classifier_train(use_ngrams = True)
 
-#if __name__ == "__main__": # For testing
+    # 2e) Print the classification report for the best performing classifier using your tokenizer.
+    classifier_train_custom()
+
+    # 2f) Answer can be found in answers.txt
+
+# if __name__ == "__main__": # For testing
     # # Testing for 2a) - PASSED
     # print("Testing 2a")
     # print("-" * 30)
@@ -235,21 +240,17 @@ if __name__ == "__main__":
     # # Testing political_phrases - PASSED
     # print("Testing political_phrases")
     # print("-" * 30)
-    #
     # phrases = political_phrases()
-    #
     # if phrases:
     #     print(f"{len(phrases)} political phrases:")
     #     print()
     #     for i, phrase in enumerate(phrases, 1):
     #         print(f"{i:2d}. {phrase}")
-    #
     #     print()
     #     print("Phrases for tokenizer:")
     #     print(phrases[:10])
     # else:
     #     print("No political phrases extracted")
-    #
     # print("\n" + "-" * 30)
     # print("Passed")
 
