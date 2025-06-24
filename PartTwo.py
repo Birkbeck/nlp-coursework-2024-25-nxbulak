@@ -127,6 +127,14 @@ def custom_tokenizer(text): # 2e) Implement a new custom tokenizer and pass it t
 
     return tokens
 
+def classifier_train_custom(): # 2e) Train new custom tokenizer using political phrases.
+    df = read_csv()
+
+    if df is None or df.empty:
+        print("Error: Data not found")
+        return None
+
+
 if __name__ == "__main__":
     # # Testing for 2a) - PASSED
     # print("Testing 2a")
@@ -182,7 +190,7 @@ if __name__ == "__main__":
     # print("\n" + "-" * 30)
     # print("Passed")
 
-    # # Testing custom_tokenizer
+    # # Testing custom_tokenizer - PASSED
     # print("Testing custom_tokenizer")
     # print("-" * 30)
     #
