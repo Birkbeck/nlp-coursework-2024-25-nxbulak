@@ -23,7 +23,7 @@ def read_csv(csv_path=Path.cwd() / "p2-texts" / "hansard40000.csv"): # 2a) Read 
     print(f"Post most common parties: {df.shape}")
 
     # 2a) iii. remove any rows where the value in the 'speech_class' column is not 'Speech'
-    df = df[df['speech_class'] != 'Speech']
+    df = df[df['speech_class'] == 'Speech']
     print(f"Post removing speech class: {df.shape}")
 
     # 2a) iv. remove any rows where the text in the 'speech' column in less than 1000 characters long.
