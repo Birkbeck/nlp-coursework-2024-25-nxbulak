@@ -70,6 +70,17 @@ def classifier_train(): # 2c) Train RandomForest (with n_estimators = 300) and S
     classifiers = [(RandomForestClassifier(n_estimators = 300), "Random Forest"), # random forest with n_estimators at 300
                    (LinearSVC(), "SVM with Linear Kernel")]
 
+    # train the classifiers
+    for clf, name in classifiers:
+        clf.fit(X_train, y_train)
+
+        # predictions for party
+        y_pred = clf.predict(X_test)
+
+        # calc and print the scikit-learn macro-average f1 score and classification reports
+        macro_f1 = f1_score(y_test, y_pred, average = 'macro')
+        print(f"Marco-average f1 score: {macro_f1}")
+        print(classification_report(y_test, y_pred))
 
 if __name__ == "__main__":
     # Testing for 2a) - PASSED
