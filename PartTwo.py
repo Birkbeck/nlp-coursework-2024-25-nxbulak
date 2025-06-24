@@ -17,7 +17,7 @@ def read_csv(csv_path=Path.cwd() / "p2-texts" / "hansard40000.csv"): # 2a) Read 
 
     # 2a) ii. remove any rows where the value of the 'party' column is not one of the four most common party names, and remove the 'Speaker' value.
     df = df[df['party'] != 'Speaker']
-    most_common_parties = df['party'].value_counts().head(4).index.tolist
+    most_common_parties = df['party'].value_counts().head(4).index.tolist()
     df = df[df['party'].isin(most_common_parties)]
 
     print(df.shape)
