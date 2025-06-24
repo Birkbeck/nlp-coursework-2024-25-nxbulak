@@ -54,9 +54,29 @@ def vectorise_speeches(): # 2b) Vectorise the speeches using TfidfVectorizer fro
                                                         stratify = y,
                                                         random_state= 26) # random seed 26
 
+    return X_train, X_test, y_train, y_test, vectoriser
+
 if __name__ == "__main__":
-    #Testing for 2a) - PASSED
+    # Testing for 2a) - PASSED
     # print("Testing 2a")
     # print("-" * 30)
     #
     # df = read_csv()
+
+    # Testing for 2b) - PENDING
+    print("Testing 2b")
+    print("-" * 30)
+
+    result = vectorise_speeches()
+
+    if result is not None:
+        X_train, X_test, y_train, y_test, vectoriser = result
+        print("Passed")
+        print(f"Training set shape: {X_train.shape}")
+        print(f"Test set shape: {X_test.shape}")
+        print(f"Training labels shape: {y_train.shape}")
+        print(f"Test labels shape: {y_test.shape}")
+        print(f"First 10 names: {vectoriser.get_feature_names_out()[:10]}")
+        print(f"Unique parties in train: {y_train.unique()}")
+    else:
+        print("Error: vectoriser failed")
