@@ -106,14 +106,14 @@ if __name__ == "__main__":
     #     print("Error: vectoriser failed")
 
     # Testing for 2c) - PASSED
-    print("Testing 2c")
-    print("-" * 30)
-    classifier_train(ngram_range = (1,1))
+    # print("Testing 2c")
+    # print("-" * 30)
+    # classifier_train(ngram_range = (1,1))
+    #
+    # print("\n" + "-" * 30)
+    # print("Passed")
 
-    print("\n" + "-" * 30)
-    print("Passed")
-
-    # Testing for 2d) - PENDING
-    print( "Testing 2d")
-    print("-" * 30)
-    classifier_train(ngram_range = (1,3))
+    # Testing for 2d) - PASSED
+    # print( "Testing 2d")
+    # print("-" * 30)
+    # classifier_train(ngram_range = (1,3))
