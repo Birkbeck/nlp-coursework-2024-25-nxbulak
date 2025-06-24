@@ -20,3 +20,11 @@ if __name__ == "__main__":
     # Testing for 2a)
     print("Testing 2a")
     print("-" * 30)
+
+    df = read_csv()
+
+    if df is not None:
+        print("csv loaded")
+        print(f"Columns: {df.columns.tolist()}")
+    else:
+        print("Error: could not load")
