@@ -153,7 +153,31 @@ def classifier_train_custom(): # 2e) Train new custom tokenizer using political 
                                                         stratify = y,
                                                         random_state= 26) # random seed 26
 
-    return X_train, X_test, y_train, y_test, vectoriser
+    # test both classifiers
+    classifiers = [(RandomForestClassifier(n_estimators = 300), "Random Forest"),
+                   (LinearSVC(), "SVM with Linear Kernel")]
+
+    best_f1 = 0
+    best_name = ""
+    best_report = ""
+
+    # train the classifiers
+    for clf, name in classifiers:
+        clf.fit(X_train, y_train)
+        # predictions for party
+        y_pred = clf.predict(X_test)
+
+        # calc and print the scikit-learn macro-average f1 score and classification reports
+        macro_f1 = f1_score(y_test, y_pred, average = 'macro')
+
+        if macro_f1 > best_f1:
+            best_f1 = macro_f1
+            best_name = name
+            best_report = classification_report(y_test, y_pred)
+
+    print(f"Best performing classifier: {best_name}")
+    print(f"Macro-average f1 score: {best_f1}")
+    print(best_report)
 
 
 if __name__ == "__main__":
