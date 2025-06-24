@@ -1,6 +1,8 @@
 import pandas as pd # sort and organise data
 
 from pathlib import Path # to access files in other directories
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.model_selection import train_test_split
 
 def read_csv(csv_path=Path.cwd() / "p2-texts" / "hansard40000.csv"): # 2a) Read the handsard40000.csv dataset in the texts directory into a dataframe. Sub-set and rename the dataframe as follows:
     # check path works
@@ -26,6 +28,13 @@ def read_csv(csv_path=Path.cwd() / "p2-texts" / "hansard40000.csv"): # 2a) Read 
 
     print(df.shape)
     return df # show original df
+
+def vectorise_speeches(): # 2b) Vectorise the speeches using TfidfVectorizer from scikit-learn. Use the default parameters, except for omitting English stopwords and setting max_features to 3000. Split the data into a train and test set, using sampling witrh a random seed of 26.
+    df = read_csv()
+
+    if df is None or df.empty:
+        print("Error: Data not found")
+        return None
 
 
 if __name__ == "__main__":
