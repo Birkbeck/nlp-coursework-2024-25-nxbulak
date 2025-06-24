@@ -130,13 +130,31 @@ if __name__ == "__main__":
     # print("Testing 2c")
     # print("-" * 30)
     # classifier_train(ngram_range = (1,1))
-    #
     # print("\n" + "-" * 30)
     # print("Passed")
 
     # Testing for 2d) - PASSED
-    # print( "Testing 2d")
+    # print("Testing 2d")
     # print("-" * 30)
     # classifier_train(ngram_range = (1,3))
 
     # Testing political_phrases - PENDING
+    print("Testing political_phrases")
+    print("-" * 30)
+
+    phrases = political_phrases()
+
+    if phrases:
+        print(f"{len(phrases)} political phrases:")
+        print()
+        for i, phrase in enumerate(phrases, 1):
+            print(f"{i:2d}. {phrase}")
+
+        print()
+        print("Phrases for tokenizer:")
+        print(phrases[:10])
+    else:
+        print("No political phrases extracted")
+
+    print("\n" + "-" * 30)
+    print("Passed")
