@@ -67,6 +67,8 @@ def classifier_train(): # 2c) Train RandomForest (with n_estimators = 300) and S
 
     X_train, X_test, y_train, y_test, vectoriser = result
 
+    classifiers = [(RandomForestClassifier(n_estimators = 300), "Random Forest"), # random forest with n_estimators at 300
+                   (LinearSVC(), "SVM with Linear Kernel")]
 
 
 if __name__ == "__main__":
