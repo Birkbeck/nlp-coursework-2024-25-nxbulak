@@ -32,7 +32,7 @@ def read_csv(csv_path=Path.cwd() / "p2-texts" / "hansard40000.csv"): # 2a) Read 
     print(df.shape)
     return df # show original df
 
-def vectorise_speeches(): # 2b) Vectorise the speeches using TfidfVectorizer from scikit-learn. Use the default parameters, except for omitting English stopwords and setting max_features to 3000. Split the data into a train and test set, using sampling witrh a random seed of 26.
+def vectorise_speeches(ngram_range = (1,1)): # 2b) Vectorise the speeches using TfidfVectorizer from scikit-learn. Use the default parameters, except for omitting English stopwords and setting max_features to 3000. Split the data into a train and test set, using sampling witrh a random seed of 26.
     df = read_csv()
 
     if df is None or df.empty:
@@ -45,7 +45,8 @@ def vectorise_speeches(): # 2b) Vectorise the speeches using TfidfVectorizer fro
 
     # TfidfVectorizer
     vectoriser = TfidfVectorizer(stop_words = 'english', # omitting English stopwords
-                                 max_features = 3000) # max_features set to 3000
+                                 max_features = 3000, # max_features set to 3000
+                                 ngram_range = ngram_range) # 2d) adjust the parameters of the Tfidfvectorizer so that unigrams, bi-grams and tri-grams will be considered features
 
     # vectorise speeches
     X_vectorised = vectoriser.fit_transform(X)
@@ -59,7 +60,7 @@ def vectorise_speeches(): # 2b) Vectorise the speeches using TfidfVectorizer fro
 
     return X_train, X_test, y_train, y_test, vectoriser
 
-def classifier_train(): # 2c) Train RandomForest (with n_estimators = 300) and SVM with linear kernel classifiers on the training set, and print the scikit-learn macro-average f1 score and classification report for each classifier on the test set. The label that you are trying to predict is the 'party' value.
+def classifier_train(ngram_range = (1,1)): # 2c) Train RandomForest (with n_estimators = 300) and SVM with linear kernel classifiers on the training set, and print the scikit-learn macro-average f1 score and classification report for each classifier on the test set. The label that you are trying to predict is the 'party' value.
     result = vectorise_speeches()
 
     if result is None:
