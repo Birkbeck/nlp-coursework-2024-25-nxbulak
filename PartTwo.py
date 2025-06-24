@@ -115,6 +115,18 @@ def custom_tokenizer(text): # 2e) Implement a new custom tokenizer and pass it t
                          'pay tribute', 'prime minister', 'public health', 'right hon', 'right hon friend', 'right hon member',
                          'secretary state', 'social care', 'uk government', 'united kingdom', 'universal credit', 'young people']
 
+    # replace phrases to be single tokens using underscore
+    for phrase in political_phrases:
+        text = re.sub(phrase, phrase.replace(' ', '_'), text)
+
+    # remove punct and keep underscores and hyphens
+    text = re.sub(r'[^\w\s-_]', ' ', text)
+
+    # split into tokens and remove short tokens
+    tokens = [token for token in text.split() if len(token) >= 2]
+
+    return tokens
+
 if __name__ == "__main__":
     # Testing for 2a) - PASSED
     # print("Testing 2a")
