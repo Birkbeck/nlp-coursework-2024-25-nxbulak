@@ -45,6 +45,14 @@ def vectorise_speeches(): # 2b) Vectorise the speeches using TfidfVectorizer fro
                                  max_features = 3000) # max_features set to 3000
 
     # vectorise speeches
+    X_vectorised = vectoriser.fit_transform(X)
+
+    # split data into a train and test set
+    X_train, X_test, y_train, y_test = train_test_split(X_vectorised,
+                                                        y,
+                                                        test_size = 0.25,
+                                                        stratify = y,
+                                                        random_state= 26) # random seed 26
 
 if __name__ == "__main__":
     #Testing for 2a) - PASSED
