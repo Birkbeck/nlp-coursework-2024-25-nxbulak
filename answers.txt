@@ -19,4 +19,4 @@ and cultural knowledge that often a higher level student (such as college/univer
 2f) Explain your tokenizer function and discuss its performance.
 
 Answer:
-When implementing my
+
