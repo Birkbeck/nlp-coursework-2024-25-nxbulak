@@ -83,6 +83,25 @@ def classifier_train(ngram_range = (1,1)): # 2c) Train RandomForest (with n_esti
         print(f"Marco-average f1 score: {macro_f1}")
         print(classification_report(y_test, y_pred))
 
+def political_phrases(): # for better context when implementing funct for 2e)
+    df = read_csv()
+
+    if df is None or df.empty:
+        print("Error: Data not found")
+        return []
+
+    # TF-IDF to find prominent phrases
+    phrase_vectoriser = TfidfVectorizer(ngram_range = (2,3), # two or three word phrases
+                                        max_features = 30, # max 30 phrases
+                                        stop_words = 'english',
+                                        min_df = 5) # min 5 times for consistency
+
+    # fit all speeches
+    phrase_vectoriser.fit(df['speech'])
+
+    # get prominent phrases
+    prominent_phrases = phrase_vectoriser.get_feature_names_out()
+
 if __name__ == "__main__":
     # Testing for 2a) - PASSED
     # print("Testing 2a")
