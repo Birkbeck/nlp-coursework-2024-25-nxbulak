@@ -64,8 +64,8 @@ def vectorise_speeches(use_ngrams = False): # 2b) Vectorise the speeches using T
 
     return X_train, X_test, y_train, y_test, vectoriser
 
-def classifier_train(ngram_range = (1,1)): # 2c) Train RandomForest (with n_estimators = 300) and SVM with linear kernel classifiers on the training set, and print the scikit-learn macro-average f1 score and classification report for each classifier on the test set. The label that you are trying to predict is the 'party' value.
-    result = vectorise_speeches()
+def classifier_train(use_ngrams = False): # 2c) Train RandomForest (with n_estimators = 300) and SVM with linear kernel classifiers on the training set, and print the scikit-learn macro-average f1 score and classification report for each classifier on the test set. The label that you are trying to predict is the 'party' value.
+    result = vectorise_speeches(use_ngrams = use_ngrams)
 
     if result is None:
         return None
