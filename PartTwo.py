@@ -7,3 +7,16 @@ def read_csv(csv_path=Path.cwd() / "p2-texts" / "hansard40000.csv", verbose=Fals
     if not csv_path.exists():
         print(f"Error: {csv_path} does not exist!")
         return None
+
+    # read csv
+    print(f"Reading csv in: {csv_path}")
+    df = pd.read_csv(csv_path)
+    print(f"Dataframe pre adjustment: {df.shape}")
+
+    return df # show original df
+
+
+if __name__ == "__main__":
+    # Testing for 2a)
+    print("Testing 2a")
+    print("-" * 30)
