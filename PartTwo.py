@@ -86,15 +86,12 @@ if __name__ == "__main__":
     # Testing for 2a) - PASSED
     # print("Testing 2a")
     # print("-" * 30)
-    #
     # df = read_csv()
 
-    # Testing for 2b) - PENDING
+    # Testing for 2b) - PASSED
     # print("Testing 2b")
     # print("-" * 30)
-    #
     # result = vectorise_speeches()
-    #
     # if result is not None:
     #     X_train, X_test, y_train, y_test, vectoriser = result
     #     print("Passed")
@@ -106,3 +103,12 @@ if __name__ == "__main__":
     #     print(f"Unique parties in train: {y_train.unique()}")
     # else:
     #     print("Error: vectoriser failed")
+
+    # Testing for 2c) - PENDING
+    print("Testing 2c")
+    print("-" * 30)
+
+    classifier_train()
+
+    print("\n" + "-" * 30)
+    print("Passed")
