@@ -151,7 +151,7 @@ def classifier_train_custom(): # 2e) Train new custom tokenizer using political 
                                                         y,
                                                         test_size = 0.25,
                                                         stratify = y,
-                                                        random_state= 26) # random seed 26
+                                                        random_state = 26) # random seed 26
 
     # test both classifiers
     classifiers = [(RandomForestClassifier(n_estimators = 300), "Random Forest"),
@@ -179,6 +179,7 @@ def classifier_train_custom(): # 2e) Train new custom tokenizer using political 
     print(f"Macro-average f1 score: {best_f1}")
     print(best_report)
 
+    return best_f1, best_name
 
 if __name__ == "__main__":
     # # Testing for 2a) - PASSED
@@ -202,17 +203,17 @@ if __name__ == "__main__":
     # else:
     #     print("Error: vectoriser failed")
 
-    # # Testing for 2c) - PASSED
-    # print("Testing 2c")
-    # print("-" * 30)
-    # classifier_train(ngram_range = (1,1))
-    # print("\n" + "-" * 30)
-    # print("Passed")
+    # Testing for 2c) - PASSED
+    print("Testing 2c")
+    print("-" * 30)
+    classifier_train(ngram_range = (1,1))
+    print("\n" + "-" * 30)
+    print("Passed")
 
-    # # Testing for 2d) - PASSED
-    # print("Testing 2d")
-    # print("-" * 30)
-    # classifier_train(ngram_range = (1,3))
+    # Testing for 2d) - PASSED
+    print("Testing 2d")
+    print("-" * 30)
+    classifier_train(ngram_range = (1,3))
 
     # # Testing political_phrases - PASSED
     # print("Testing political_phrases")
@@ -238,27 +239,32 @@ if __name__ == "__main__":
     # # Testing custom_tokenizer - PASSED
     # print("Testing custom_tokenizer")
     # print("-" * 30)
-    #
     # # NOTE: below text is randomly selected and pasted from CSV document provided for part two
     # test_text = """No constituency in the country has such a high concentration of first-rate pubs as Ipswich, and currently in Ipswich we have very low levels of covid 19. Last weekend, I spoke to the landlord of the Belstead Arms in Chantry, who had to watch as many of his loyal customers, who would have been spending hundreds of pounds in his pub supporting the pub to recover from the previous lockdown, went to the off-licence across the street to buy beer from there. Will my right hon. Friend assure me that at the closest possible time he will review measures and ensure that pubs in Ipswich can stay open later?"""
-    #
     # print("Original text:")
     # print(test_text)
     # print()
-    #
     # tokens = custom_tokenizer(test_text)
     # print("Tokenized text:")
     # print(tokens)
     # print()
-    #
     # political_phrases = [token for token in tokens if '_' in token] # check political phrases combined as text has covid 19
     # print(f"Political phrases found: {len(political_phrases)}")
     # for phrase in political_phrases:
     #     print(f"Political phrase: {phrase}")
-    #
     # print("\n" + "-" * 30)
     # print("Passed")
 
-    # # Testing classifier_train_custom - PENDING
-    # print("Testing classifier_train-custom")
-    # print("-" * 30)
+    # Testing classifier_train_custom - PENDING
+    print("Testing classifier_train_custom")
+    print("-" * 30)
+
+    result = classifier_train_custom()
+
+    if result is not None:
+        best_f1, best_name = result
+        print("-" * 30)
+        print(f"Best performing classifier: {best_name}")
+        print(f"Best f1 score: {best_f1}")
+    print("\n" + "-" * 30)
+    print("Passed")
