@@ -7,24 +7,28 @@ def read_csv(csv_path=Path.cwd() / "p2-texts" / "hansard40000.csv"): # 2a) Read 
     if not csv_path.exists():
         print(f"Error: {csv_path} does not exist!")
         return None
-    # read csv & prints for testing
-    #print(f"Reading csv in: {csv_path}")
+
     df = pd.read_csv(csv_path)
-    #print(f"Dataframe pre adjustment: {df.shape}")
+    print(f"Dataframe pre adjustment: {df.shape}")
 
     # 2a) i. rename the 'Labour (Co-op)' value in party column to 'Labour', and then:
     df['party'] = df ['party'].replace('Labour (Co-op)', 'Labour')
+    print(f"Post re-naming Labour: {df.shape}")
 
     # 2a) ii. remove any rows where the value of the 'party' column is not one of the four most common party names, and remove the 'Speaker' value.
     df = df[df['party'] != 'Speaker']
+    print(f"Post removing speaker: {df.shape}")
     most_common_parties = df['party'].value_counts().head(4).index.tolist()
     df = df[df['party'].isin(most_common_parties)]
+    print(f"Post most common parties: {df.shape}")
 
     # 2a) iii. remove any rows where the value in the 'speech_class' column is not 'Speech'
     df = df[df['speech_class'] != 'Speech']
+    print(f"Post removing speech class: {df.shape}")
 
     # 2a) iv. remove any rows where the text in the 'speech' column in less than 1000 characters long.
     df = df[df['speech'].str.len() >= 1000]
+    print(f"Post removing speech length: {df.shape}")
 
     print(df.shape)
     return df # show original df
