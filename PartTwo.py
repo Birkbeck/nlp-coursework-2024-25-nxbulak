@@ -120,7 +120,7 @@ def custom_tokenizer(text): # 2e) Implement a new custom tokenizer and pass it t
         text = re.sub(phrase, phrase.replace(' ', '_'), text)
 
     # remove punct and keep underscores and hyphens
-    text = re.sub(r'[^\w\s-_]', ' ', text)
+    text = re.sub(r'[^\w\s\-_]', ' ', text)
 
     # split into tokens and remove short tokens
     tokens = [token for token in text.split() if len(token) >= 2]
@@ -198,7 +198,7 @@ if __name__ == "__main__":
     print(tokens)
     print()
 
-    political_phrases = [token for token in token if '_' in token] # check political phrases combined as text has covid 19
+    political_phrases = [token for token in tokens if '_' in token] # check political phrases combined as text has covid 19
     print(f"Political phrases found: {len(political_phrases)}")
     for phrase in political_phrases:
         print(f"Political phrase: {phrase}")
