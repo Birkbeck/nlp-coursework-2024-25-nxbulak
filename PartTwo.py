@@ -104,11 +104,11 @@ if __name__ == "__main__":
     # else:
     #     print("Error: vectoriser failed")
 
-    # Testing for 2c) - PENDING
-    print("Testing 2c")
-    print("-" * 30)
-
-    classifier_train()
-
-    print("\n" + "-" * 30)
-    print("Passed")
+    # Testing for 2c) - PASSED
+    # print("Testing 2c")
+    # print("-" * 30)
+    #
+    # classifier_train()
+    #
+    # print("\n" + "-" * 30)
+    # print("Passed")
