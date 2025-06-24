@@ -1,4 +1,5 @@
 import pandas as pd # sort and organise data
+import re # for regular expressions
 
 from pathlib import Path # to access files in other directories
 from sklearn.feature_extraction.text import TfidfVectorizer # for 2b)
@@ -104,6 +105,8 @@ def political_phrases(): # for better context when implementing funct for 2e)
 
     return prominent_phrases.tolist()
 
+def custom_tokenizer(text): # 2e) Implement a new custom tokenizer and pass it to the tokenizer argument of TfidfVectorizer.
+
 if __name__ == "__main__":
     # Testing for 2a) - PASSED
     # print("Testing 2a")
@@ -138,23 +141,23 @@ if __name__ == "__main__":
     # print("-" * 30)
     # classifier_train(ngram_range = (1,3))
 
-    # Testing political_phrases - PENDING
-    print("Testing political_phrases")
-    print("-" * 30)
-
-    phrases = political_phrases()
-
-    if phrases:
-        print(f"{len(phrases)} political phrases:")
-        print()
-        for i, phrase in enumerate(phrases, 1):
-            print(f"{i:2d}. {phrase}")
-
-        print()
-        print("Phrases for tokenizer:")
-        print(phrases[:10])
-    else:
-        print("No political phrases extracted")
-
-    print("\n" + "-" * 30)
-    print("Passed")
+    # Testing political_phrases - PASSED
+    # print("Testing political_phrases")
+    # print("-" * 30)
+    #
+    # phrases = political_phrases()
+    #
+    # if phrases:
+    #     print(f"{len(phrases)} political phrases:")
+    #     print()
+    #     for i, phrase in enumerate(phrases, 1):
+    #         print(f"{i:2d}. {phrase}")
+    #
+    #     print()
+    #     print("Phrases for tokenizer:")
+    #     print(phrases[:10])
+    # else:
+    #     print("No political phrases extracted")
+    #
+    # print("\n" + "-" * 30)
+    # print("Passed")
