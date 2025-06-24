@@ -33,7 +33,7 @@ def read_csv(csv_path=Path.cwd() / "p2-texts" / "hansard40000.csv"): # 2a) Read 
     print(df.shape)
     return df # show original df
 
-def vectorise_speeches(ngram_range = (1,1)): # 2b) Vectorise the speeches using TfidfVectorizer from scikit-learn. Use the default parameters, except for omitting English stopwords and setting max_features to 3000. Split the data into a train and test set, using sampling witrh a random seed of 26.
+def vectorise_speeches(use_ngrams = False): # 2b) Vectorise the speeches using TfidfVectorizer from scikit-learn. Use the default parameters, except for omitting English stopwords and setting max_features to 3000. Split the data into a train and test set, using sampling witrh a random seed of 26.
     df = read_csv()
 
     if df is None or df.empty:
@@ -44,11 +44,14 @@ def vectorise_speeches(ngram_range = (1,1)): # 2b) Vectorise the speeches using 
     X = df['speech']
     y = df['party']
 
-    # TfidfVectorizer
-    vectoriser = TfidfVectorizer(stop_words = 'english', # omitting English stopwords
-                                 max_features = 3000, # max_features set to 3000
-                                 ngram_range = ngram_range) # 2d) adjust the parameters of the Tfidfvectorizer so that unigrams, bi-grams and tri-grams will be considered features
-
+    # TfidfVectorizer with conditional ngram_range
+    if use_ngrams:
+        vectoriser = TfidfVectorizer(stop_words = 'english', # omitting English stopwords
+                                     max_features = 3000, # max_features set to 3000
+                                     ngram_range = ngram_range) # 2d) adjust the parameters of the Tfidfvectorizer so that unigrams, bi-grams and tri-grams will be considered features
+    else:
+        vectoriser = TfidfVectorizer(stop_words = 'english',
+                                     max_features = 3000)
     # vectorise speeches
     X_vectorised = vectoriser.fit_transform(X)
 
@@ -186,6 +189,14 @@ if __name__ == "__main__":
     df = read_csv()
     if df is not None:
         print(f"Dataframe dimensions: {df.shape}")
+
+    # 2b) No print request
+
+    # 2c) Print the scikit-learn macro-average f1 score and classification report for each classifier on the test set
+    classifier_train()
+
+    # 2d) Print the classification report as in 2(c) again using these parameters
+    classifier_train
 
 #if __name__ == "__main__": # For testing
     # # Testing for 2a) - PASSED
