@@ -23,6 +23,9 @@ def read_csv(csv_path=Path.cwd() / "p2-texts" / "hansard40000.csv"): # 2a) Read 
     # 2a) iii. remove any rows where the value in the 'speech_class' column is not 'Speech'
     df = df[df['speech_class'] != 'Speech']
 
+    # 2a) iv. remove any rows where the text in the 'speech' column in less than 1000 characters long.
+    df = df[df['speech'].str.len() >= 1000]
+
     print(df.shape)
     return df # show original df
 
@@ -34,9 +37,9 @@ if __name__ == "__main__":
 
     df = read_csv()
 
-    if df is not None:
-        print("csv loaded")
-        print(f"Columns: {df.columns.tolist()}")
-        print(f"\nUnique parties in df: {df['party'].unique()}") # check party names have been changed
-    else:
-        print("Error: could not load")
+    # if df is not None:
+    #     print("csv loaded")
+    #     print(f"Columns: {df.columns.tolist()}")
+    #     print(f"\nUnique parties in df: {df['party'].unique()}") # check party names have been changed
+    # else:
+    #     print("Error: could not load")
