@@ -19,4 +19,21 @@ and cultural knowledge that often a higher level student (such as college/univer
 2f) Explain your tokenizer function and discuss its performance.
 
 Answer:
+My approach to the custom tokenizer (CT) is to build on n-gram concepts by implementing the
+'political_phrases()' function. This helped me to identify 30 key phrases used repeatedly and
+allowed me to convert the phrases into singular tokens using an underscore. This method is more
+sophisticated in comparison to using n-grams because the focus is contextually targeted at
+political phrases as opposed to generic phrases that n-grams would identify. My approach shows
+an excellent trade-off between performance and efficiency by using fewer, more meaningful parameters
+(through using the 30 political phrases) as opposed to 3000 generic n-gram combinations, while
+achieving the highest classification performance.
 
+Focussing on the results, overall, the best performing classifiers consistently were SVM with
+linear kernel with the n-grams approach obtaining an f1 score of 0.6406, the unigrams-only
+approach obtaining an f1 score of 0.6454 and my CT obtaining the best f1 score of 0.6559
+(increase of 1.09 percentage points in comparison to the other best performing classifier).
+From examining the individual class scores one of the main things that stands out is that my CT
+produces a significantly higher individual class score specifically for the Liberal Democrat
+party (my CT obtaining a 0.39 f1 score compared to 0.36 by the unigrams-only approach and 0.29
+by the n-grams approach). This is quite significant as to the reason why overall my CT performed
+best as it is overall more balanced across all classes as opposed to the other two.

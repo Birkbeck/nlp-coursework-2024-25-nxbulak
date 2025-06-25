@@ -33,7 +33,7 @@ def read_csv(csv_path=Path.cwd() / "p2-texts" / "hansard40000.csv"): # 2a) Read 
     print(df.shape)
     return df # show original df
 
-def vectorise_speeches(use_ngrams = False): # 2b) Vectorise the speeches using TfidfVectorizer from scikit-learn. Use the default parameters, except for omitting English stopwords and setting max_features to 3000. Split the data into a train and test set, using sampling witrh a random seed of 26.
+def vectorise_speeches(use_ngrams = False): # 2b) Vectorise the speeches using TfidfVectorizer from scikit-learn. Use the default parameters, except for omitting English stopwords and setting max_features to 3000. Split the data into a train and test set, using sampling with a random seed of 26.
     df = read_csv()
 
     if df is None or df.empty:
