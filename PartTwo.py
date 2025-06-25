@@ -8,7 +8,7 @@ from sklearn.ensemble import RandomForestClassifier # for 2c)
 from sklearn.svm import LinearSVC # for 2c)
 from sklearn.metrics import f1_score, classification_report # for 2c)
 
-def read_csv(csv_path=Path.cwd() / "p2-texts" / "hansard40000.csv"): # 2a) Read the handsard40000.csv dataset in the texts directory into a dataframe. Sub-set and rename the dataframe as follows:
+def read_csv(csv_path=Path.cwd() / "p2-texts" / "hansard40000.csv"): # 2a) Read the hansard40000.csv dataset in the texts directory into a dataframe. Sub-set and rename the dataframe as follows:
     # check path works
     if not csv_path.exists():
         print(f"Error: {csv_path} does not exist!")

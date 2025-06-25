@@ -83,7 +83,7 @@ def count_syl(word,
     word = word.lower()  # convert to lowercase for consistency
 
     if word in d:  # try CMU dict first
-        return len([p for p in d[word][0] if p[-1].isdigit()])  # count stress-marked phemones
+        return len([p for p in d[word][0] if p[-1].isdigit()])  # count stress-marked phonemes
 
     # count vowel groups when word not in dict
     vowels = 'aeiouy'
